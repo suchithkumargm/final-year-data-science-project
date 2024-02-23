@@ -1,0 +1,41 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .brand {
+    display: flex;
+    align-items: center;
+}
+
+header .brand .brand-name {
+    font-size: 2rem;
+    color: var(--primary-color);
+    padding: 0 1rem;
+    font-weight: 600;
+}
+
+header .auth {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    width: 7rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+header .auth:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+}
+
+header .authentication a {
+    padding: 0 0.5rem;
+}

@@ -1,0 +1,128 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Zomato",
+    "dateExported": "2024-02-21T17:24:36.637Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "b92e96d0-720c-4dc0-90ed-410564ebc070",
+            "name": "Customer",
+            "containerId": "",
+            "created": "2024-02-21T16:53:31.359Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "77c245d3-77a8-4dba-bedd-0d3723024ec1",
+            "name": "auth",
+            "containerId": "b92e96d0-720c-4dc0-90ed-410564ebc070",
+            "created": "2024-02-21T16:53:41.776Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "ff10eb62-0a5b-4e2a-9af8-5f117a1da949",
+            "name": "resturants",
+            "containerId": "",
+            "created": "2024-02-21T16:58:28.804Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "c78e1bc1-fdc8-49c9-af54-43782aca4496",
+            "name": "orders",
+            "containerId": "",
+            "created": "2024-02-21T16:59:01.868Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "33ebf277-828b-4101-936c-a3fb19625d61",
+            "colId": "9f7702a6-bb22-4543-ac23-ab95676b9db8",
+            "containerId": "77c245d3-77a8-4dba-bedd-0d3723024ec1",
+            "name": "createuser",
+            "url": "http://localhost:5000/auth/customer/createcustomer",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-21T16:54:23.704Z",
+            "modified": "2024-02-21T16:55:38.291Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"shashidhar\",\n  \"email\":\"shashidhar09@gmail.com\",\n  \"customerName\":\"shashidhar-as\",\n  \"password\":\"12345\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d8736001-c95d-4a41-ba01-cb5215f970f9",
+            "colId": "9f7702a6-bb22-4543-ac23-ab95676b9db8",
+            "containerId": "77c245d3-77a8-4dba-bedd-0d3723024ec1",
+            "name": "login",
+            "url": "http://localhost:5000/auth/customer/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-21T16:56:02.254Z",
+            "modified": "2024-02-21T16:56:44.125Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"customerName\":\"shashidhar-as\",\n  \"password\":\"12345\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5111fc68-0a02-4525-9443-71c0a21373fd",
+            "colId": "9f7702a6-bb22-4543-ac23-ab95676b9db8",
+            "containerId": "77c245d3-77a8-4dba-bedd-0d3723024ec1",
+            "name": "fetch user",
+            "url": "http://localhost:5000/auth/customer/getcustomer",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-21T16:57:08.692Z",
+            "modified": "2024-02-21T16:58:03.680Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lciI6eyJpZCI6IjY1ZDYyYjBhYTVhZjljZGQ2MzdjNjUyMiJ9LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3MDg1MzQ2MDR9.5oJlK7qHZhld7qhD20CjlU5b0iGvRbt1XQhI3IC1MfI"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "20d94bdc-bfea-4799-a23a-e5c73f719dd9",
+            "colId": "9f7702a6-bb22-4543-ac23-ab95676b9db8",
+            "containerId": "ff10eb62-0a5b-4e2a-9af8-5f117a1da949",
+            "name": "getresturant",
+            "url": "http://localhost:5000/customers/restaurants/getrestaurant/10000",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-21T16:59:20.885Z",
+            "modified": "2024-02-21T17:00:09.443Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lciI6eyJpZCI6IjY1ZDYyYjBhYTVhZjljZGQ2MzdjNjUyMiJ9LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3MDg1MzQ2MDR9.5oJlK7qHZhld7qhD20CjlU5b0iGvRbt1XQhI3IC1MfI"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2862b8ad-7847-4f72-b4fe-522eb2b26234",
+            "colId": "9f7702a6-bb22-4543-ac23-ab95676b9db8",
+            "containerId": "ff10eb62-0a5b-4e2a-9af8-5f117a1da949",
+            "name": "getRestaurantsByLocation",
+            "url": "http://localhost:5000/customers/restaurants/getallrestaurant/Banashankari",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-02-21T17:16:13.266Z",
+            "modified": "2024-02-21T17:22:29.197Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
