@@ -28,12 +28,14 @@ header .auth {
     font-size: 1.3rem;
     font-weight: 500;
     cursor: pointer;
+    transition: all 0.5s;
 }
 
 header .auth:hover {
     background-color: var(--white-color);
     color: var(--primary-color);
     outline: 2px solid var(--primary-color);
+    transition: all 0.5s;
 }
 
 header .authentication a {

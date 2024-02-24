@@ -1,12 +1,12 @@
-.outer-scrolling-container{
+.outer-scrolling-container {
     width: 100%;
-    height:110vh;
+    height: 110vh;
     overflow: hidden;
-    background: linear-gradient(to right, var(--secondary-color),var(--white-color));
+    background: linear-gradient(to right, var(--secondary-color), var(--white-color));
 }
 
-.scrolling-container{
-    transform:rotate(-15deg) translateY(-7rem);
+.scrolling-container {
+    transform: rotate(-15deg) translateY(-7rem);
 }
 
 .scroller {
@@ -36,23 +36,23 @@
     width: max-content;
     flex-wrap: nowrap;
     animation:
-        scroll var(--_animation-duration, 40s) var(--_animation-direction,forwards) linear infinite;
+        scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
 }
 
-.scroller[data-direction="right"]{
-    --_animation-direction:reverse;
+.scroller[data-direction="right"] {
+    --_animation-direction: reverse;
 }
 
-.scroller[data-direction="left"]{
-    --_animation-direction:forwards;
+.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
 }
 
-.scroller[data-speed="fast"]{
-    --_animation-duration:30s;
+.scroller[data-speed="fast"] {
+    --_animation-duration: 30s;
 }
 
-.scroller[data-speed="slow"]{
-    --_animation-duration:50s;
+.scroller[data-speed="slow"] {
+    --_animation-duration: 50s;
 }
 
 @keyframes scroll {
@@ -77,6 +77,13 @@
     text-align: center;
     border-radius: 17px;
     cursor: pointer;
+    transition: all 0.5s;
+}
+
+.browse-restaurants:hover,
+.launch-restaurants:hover{
+    transform: scale(1.05);
+    transition: all 0.5s;
 }
 
 .home-option p:first-child {

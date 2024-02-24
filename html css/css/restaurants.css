@@ -55,6 +55,8 @@ input.search::after {
 }
 
 .recommendations .recommendations-cards .card {
+    width: 20vw;
+    height: 40vh;
     position: relative;
     cursor: pointer;
     transition: all 0.5s;
@@ -77,37 +79,47 @@ input.search::after {
 }
 
 .recommendations .recommendations-cards #card1 {
-    width: 17rem;
-    height: 19rem;
-
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../images/pizza.avif');
     background-size: cover;
     border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards #card2 {
-    width: 17rem;
-    height: 19rem;
-
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../images/burger.jpeg');
     background-size: cover;
     border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards #card3 {
-    width: 17rem;
-    height: 19rem;
-
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../images/butterchicken.jpeg');
     background-size: cover;
     border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards #card4 {
-    width: 17rem;
-    height: 19rem;
-
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../images/masalapoori.jpeg');
     background-size: cover;
     border-radius: 1.5rem;
+}
+
+.restaurants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 2rem;
+    place-items: center;
+    padding: 5rem 0;
+}
+
+.restaurant {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 1.5rem;
+    background-color: var(--background-color);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.restaurant:hover {
+    transform: scale(1.05);
+    transition: all 0.5s;
 }
