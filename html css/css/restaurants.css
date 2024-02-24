@@ -112,7 +112,7 @@ input.search::after {
 
 .restaurant {
     width: 15rem;
-    height: 15rem;
+    height: 20rem;
     border-radius: 1.5rem;
     background-color: var(--background-color);
     transition: all 0.5s;
@@ -122,4 +122,50 @@ input.search::after {
 .restaurant:hover {
     transform: scale(1.05);
     transition: all 0.5s;
+}
+
+.restaurants .card .image {
+    width: 100%;
+    height: 10rem;
+    background: url('../images/masalapoori.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.restaurants .details {
+    padding: 1rem;
+}
+
+.restaurants .details h3{
+    font-size: 1.3rem;
+}
+
+.restaurants .details .location{
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+}
+
+.restaurants .details ul{
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+}
+
+.restaurants .details li{
+    padding: 0 1rem;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+}
+
+.restaurants .details .ratings{
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.restaurants .details .ratings .rating{
+    padding: 0.4rem 0;
+    font-weight: 700;
 }
