@@ -1,0 +1,106 @@
+.outer-scrolling-container {
+    width: 100%;
+    height: 110vh;
+    overflow: hidden;
+    background: linear-gradient(to right, var(--secondary-color), var(--white-color));
+}
+
+.scrolling-container {
+    transform: rotate(-15deg) translateY(-7rem);
+}
+
+.scroller {
+    max-width: 100vw;
+}
+
+.scroller-inner {
+    display: flex;
+    gap: 3rem;
+    padding-block: 2rem;
+    flex-wrap: wrap;
+}
+
+.scroller-inner img {
+    width: 15rem;
+    height: 12rem;
+    border-radius: 1.5rem;
+}
+
+.scroller[data-animated=true] {
+    overflow: hidden;
+    /* mask: linear-gradient(90deg, transparent, var(--white-color) 5%, var(--white-color) 95%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, var(--white-color) 5%, var(--white-color) 95%, transparent); */
+}
+
+.scroller[data-animated=true] .scroller-inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation:
+        scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+    --_animation-duration: 30s;
+}
+
+.scroller[data-speed="slow"] {
+    --_animation-duration: 50s;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
+.home-options {
+    display: flex;
+    justify-content: space-around;
+    padding: 5rem;
+}
+
+.home-option {
+    position: relative;
+    background-color: var(--background-color);
+    width: 25vw;
+    min-height: 25vh;
+    height: fit-content;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.browse-restaurants:hover,
+.launch-restaurants:hover{
+    transform: scale(1.05);
+    transition: all 0.5s;
+}
+
+.home-option p:first-child {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+.home-option p:nth-child(2) {
+    color: var(--black-color);
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.home-option svg {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1rem;
+}
