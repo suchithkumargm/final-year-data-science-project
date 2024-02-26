@@ -1,0 +1,36 @@
+footer{
+    height: 30vh;
+    background-color: var(--primary-color);
+}
+
+footer .brand{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+footer .brand a {
+    color: var(--white-color);
+    padding: 0.5rem;
+}
+
+footer .brand p{
+    font-size: 2rem;
+    padding: 0.9rem 0.5rem;
+}
+
+footer .social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .social-links svg{
+    padding: 2rem;
+    transition: all 0.5s;
+}
+
+footer .social-links svg:hover{
+    transform: scale(1.3);
+    transition: all 0.5s;
+}
