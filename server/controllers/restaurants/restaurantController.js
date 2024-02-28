@@ -20,3 +20,13 @@ export const getRestaurantsByLocation = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
+export const getLocations = async (req, res) => {
+  try {
+    const locations = await Restaurant.distinct('location');
+    res.json(locations);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+};
