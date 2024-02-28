@@ -37,7 +37,7 @@ const Home = () => {
             </div>
 
             <div class="home-options">
-                <Link to="/browse-restaurants" class="home-option browse-restaurants">
+                <Link to="customers/browse-restaurants" class="home-option browse-restaurants">
                     <p>Browse Restaurants</p>
                     <p>Discover Flavor, Rate Service: Navigate Restaurants with Personalized Ratings.</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
