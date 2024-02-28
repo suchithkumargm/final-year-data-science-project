@@ -1,0 +1,47 @@
+.full-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    
+}
+
+.signup-label{
+    font-size: 2.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form-tags{
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    
+}
+
+.inpt-label{
+    background-color: var(--background-color);
+    margin-bottom: 1.5rem;
+    border-style: none;
+    height:2.5rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+}
+
+
+.s-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-style: none;
+    border-radius:0.4rem ;
+    width: 25rem;
+    height: 2.5rem;
+}
+
+main .s-btn:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    transition: all 0.5s;
+}
