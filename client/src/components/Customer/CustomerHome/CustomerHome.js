@@ -16,29 +16,52 @@ const fetcher = async (url) => {
 const CustomerHome = () => {
 
     const [isPopupOpen, setPopupOpen] = useState(false);
-    const [selectedOption, setSelectedLocation] = useState('');
+    const [selectedLocation, setSelectedLocation] = useState('');
 
     useEffect(() => {
         // Open the popup when CustomerHome.js loads
         setPopupOpen(true);
     }, []);
 
-    const handleSave = (selectedOption) => {
-        // Implement the logic you want to execute when the save button is clicked in the popup
-        setSelectedLocation(selectedOption)
+    const handleSave = (selectedLocation) => {
+        setSelectedLocation(selectedLocation)
         setPopupOpen(false);
     };
+
+    const handleRestaurantClick=(customer_id)=>{
+        
+    }
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(12); // Number of items per page
     const [searchTerm, setSearchTerm] = useState('');
 
-    console.log(selectedOption);
-    const { data: restaurants, error } = useSWR(`http://localhost:5000/customers/restaurants/getallrestaurant/${selectedOption}`, fetcher);
-    console.log(restaurants);
+    //call get all restaurants API
+    const { data: restaurants, error } = useSWR(`http://localhost:5000/customers/restaurants/getallrestaurant/${selectedLocation}`, fetcher);
+
     if (error) {
         console.error('Error fetching restaurants:', error);
     }
+
+    //call recommendations API
+    // const { data: recommendations, err } = useSWR(
+    //     "http://localhost:5000/customers/orders/getRestaurantRecommendations",
+    //     () =>
+    //         fetcher(
+    //             "http://localhost:5000/customers/orders/getRestaurantRecommendations",
+    //             {
+    //                 method: "GET",
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                 },
+    //                 body: JSON.stringify({ location: "Banashankari", customer_id: 66918 }),
+    //             }
+    //         )
+    // );
+    // console.log(recommendations);
+    // if (err) {
+    //     console.error('Error fetching recommendations:', err);
+    // }
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
@@ -92,7 +115,7 @@ const CustomerHome = () => {
                         const displayedCuisines = cuisinesArray.slice(0, 2);
 
                         return (
-                            <Link key={restaurant.restaurant_id} to={`${restaurant.restaurant_id}`}>
+                            <Link key={restaurant.restaurant_id} to={`${restaurant.restaurant_id}`} onClick={() => handleRestaurantClick(restaurant.restaurant_id)}>
                                 <div className="restaurant card">
                                     <div class="image"></div>
                                     <div class="details">
