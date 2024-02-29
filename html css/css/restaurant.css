@@ -1,0 +1,39 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+input.search {
+    width: 60vw;
+    height: 8vh;
+    border: none;
+    border-radius: 2rem;
+    outline: none;
+    background-color: var(--background-color);
+
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+input.search::placeholder {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+}
+
+input.search:active {
+    border: none;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+}
+
+input.search::after {
+    border: none;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+}
