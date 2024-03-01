@@ -6,18 +6,16 @@
     
 }
 
-.signup-label{
-    font-size: 2.4rem;
+.form-name{
+    font-weight: 600;
     color: var(--secondary-color);
     margin-bottom: 1.5rem;
-    font-weight: 600;
 }
 
 .form-tags{
     display: flex;
     flex-direction: column;
     width: 25rem;
-    
 }
 
 .inpt-label{
@@ -30,7 +28,7 @@
 }
 
 
-.s-btn {
+.l-btn {
     background-color: var(--primary-color);
     color: var(--white-color);
     border-style: none;
@@ -39,35 +37,19 @@
     height: 2.5rem;
 }
 
-main .s-btn:hover {
+.l-btn:hover {
     background-color: var(--white-color);
     color: var(--primary-color);
     outline: 2px solid var(--primary-color);
     transition: all 0.5s;
 }
 
-.fa{
-    padding-bottom: 17px;
-    padding-bottom: 17px;
-    margin-left: -18px;
-    margin-bottom: 6px;
-    padding-bottom: -9px;
+.forget-label{
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
 }
 
-.pass{
-    display: flex;
-    flex-direction: row;
-}
-
-#confirm-password{
-    width: 380px;  
-}
-#confirm-eye-icon{
-    padding-bottom: 17px;
-    margin-left: -18px;
-    margin-bottom: 6px;
-    padding-bottom: -9px;
-}
-#password{
-    width: 380px;
+.page-name{
+    font-size: 2.4rem;
 }
