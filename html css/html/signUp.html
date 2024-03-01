@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/utils.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/signUp.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Your custom CSS here */
+        .toggle-password {
+            position: relative;
+            left: -30px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        #eye-icon {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        #password[type="password"], #confirm-password[type="password"] {
+            -webkit-text-security: disc;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
+                    stroke="#172B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-soup">
+                    <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
+                    <path d="M7 21h10" />
+                    <path d="M19.5 12 22 6" />
+                    <path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62" />
+                    <path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62" />
+                    <path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62" />
+                </svg></a>
+            <p class="brand-name"><a href="#">Zomato Help</a></p>
+        </div>
+        <div class="authentication">
+            <a href="#"><button class="auth">Login</button></a>
+            <a href="#"><button class="auth">Sign Up</button></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="full-form">
+            <div class="form-name">
+                <p class="signup-label">Create a new account</p>
+            </div>
+            <div class="form-tags">
+                <input type="text" class="inpt-label" placeholder="Full Name">
+                <input type="text" class="inpt-label" placeholder="Email Address">
+                <input type="text" class="inpt-label" placeholder="User Name">
+                <div class="pass">
+                    <input type="password" class="inpt-label" placeholder="Password" id="password">
+
+                    <button class="toggle-password" onclick="togglePasswordVisibility()">
+                        <i class="fa fa-eye" id="eye-icon" ></i>
+                    </button>
+                </div>
+                <div class="pass" >
+                    <input type="password" class="inpt-label" placeholder="Confirm Password" id="confirm-password" >
+
+                    <button class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
+                        <i class="fa fa-eye" id="confirm-eye-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="signup-btn">
+                <input class="s-btn" type="button" value="Sign Up">
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript for toggling password visibility -->
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var eyeIcon = document.getElementById("eye-icon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+        function toggleConfirmPasswordVisibility() {
+            var confirmPasswordInput = document.getElementById("confirm-password");
+            var confirmEyeIcon = document.getElementById("confirm-eye-icon");
+            if (confirmPasswordInput.type === "password") {
+                confirmPasswordInput.type = "text";
+                confirmEyeIcon.classList.remove("fa-eye");
+                confirmEyeIcon.classList.add("fa-eye-slash");
+            } else {
+                confirmPasswordInput.type = "password";
+                confirmEyeIcon.classList.remove("fa-eye-slash");
+                confirmEyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</body>
+
+</html>

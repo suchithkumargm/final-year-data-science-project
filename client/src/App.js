@@ -6,6 +6,8 @@ import Header from './components/Header/Header.js';
 import Home from './components/Home/Home.js'; 
 import Footer from './components/Footer/Footer.js';
 import CustomerHome from './components/Customer/CustomerHome/CustomerHome.js';
+import SignUp from './components/Sign Up/SignUp.js';
+import Login from './components/Login/Login.js';
 
 const App = () => {
 
@@ -15,6 +17,8 @@ const App = () => {
 				<Header />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/customer/createCustomer" element={<SignUp />} />
+					<Route path="/customer/login" element={<Login />} />
 					<Route path="/customers/browse-restaurants" element={<CustomerHome />} />
 				</Routes>
 				<Footer />

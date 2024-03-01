@@ -61,6 +61,7 @@ export const createCustomer = async (req, res) => {
         const authToken = jwt.sign(data, JWT_SECRET);
 
         success = true;
+        console.log(customer);
         res.json({ success, authToken, role: 'customer', customerId });
     } catch (error) {
         console.error(error);
@@ -69,6 +70,7 @@ export const createCustomer = async (req, res) => {
 }
 
 
+// Route to authenticate a user
 // Route to authenticate a user
 export const loginCustomer = async (req, res) => {
     let success = false;
@@ -82,7 +84,7 @@ export const loginCustomer = async (req, res) => {
 
     try {
         // Find the user by email
-        let customer = await Customer.findOne({ customerName:customerName  });
+        let customer = await Customer.findOne({ customerName });
 
         if (!customer) {
             success = false;
@@ -102,16 +104,17 @@ export const loginCustomer = async (req, res) => {
             customer: {
                 id: customer.id,
             },
-            role:'customer'
+            role: 'customer'
         };
         const authToken = jwt.sign(data, JWT_SECRET);
         success = true;
-        res.json({ success, authToken ,role:'customer' });
+        res.json({ success, authToken, role: 'customer', customerId: customer.customer_id }); // Include customerId in the response
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
 }
+
 
 // Route to get user details (requires authentication)
 export const getCustomer = async (req, res) => {
