@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
 
 const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
     const handleLogout = () => {
         // Remove the 'token' from localStorage when logging out
@@ -12,15 +11,13 @@ const Header = () => {
         localStorage.removeItem('role');
         localStorage.removeItem('customerId');
         // Update isLoggedIn state to false
-        setIsLoggedIn(false);
         // Redirect to home page after logout
         window.location.href = "/";
     };
 
     // Update isLoggedIn state on component mount
     useEffect(() => {
-        setIsLoggedIn(!!localStorage.getItem('token'));
-    }, []);
+    }, [localStorage.getItem('token')]);
 
     return (
         <header>
@@ -38,7 +35,7 @@ const Header = () => {
                 <p className="brand-name"><Link to="/">Zomato Help</Link></p>
             </div>
             <div className="authentication">
-                {isLoggedIn ? (
+                {localStorage.getItem('token') ? (
                     <button className="auth" onClick={handleLogout}>Logout</button>
                 ) : (
                     <>
