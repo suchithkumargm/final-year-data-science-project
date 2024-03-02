@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 
 import './CustomerHome.css';
+import PopUp from '../PopUp/PopUp.js';
 
 const fetcher = async (url) => {
     const response = await fetch(url);
@@ -13,12 +14,28 @@ const fetcher = async (url) => {
 };
 
 const CustomerHome = () => {
+
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [selectedOption, setSelectedLocation] = useState('');
+
+    useEffect(() => {
+        // Open the popup when CustomerHome.js loads
+        setPopupOpen(true);
+    }, []);
+
+    const handleSave = (selectedOption) => {
+        // Implement the logic you want to execute when the save button is clicked in the popup
+        setSelectedLocation(selectedOption)
+        setPopupOpen(false);
+    };
+
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(12); // Number of items per page
     const [searchTerm, setSearchTerm] = useState('');
 
-    const { data: restaurants, error } = useSWR(`http://localhost:5000/customers/restaurants/getallrestaurant/Banashankari`, fetcher);
-
+    console.log(selectedOption);
+    const { data: restaurants, error } = useSWR(`http://localhost:5000/customers/restaurants/getallrestaurant/${selectedOption}`, fetcher);
+    console.log(restaurants);
     if (error) {
         console.error('Error fetching restaurants:', error);
     }
@@ -42,6 +59,7 @@ const CustomerHome = () => {
 
     return (
         <>
+            {isPopupOpen && <PopUp onSave={handleSave} />}
             <div className="recommendations">
                 <h1>Personalized Recommendations Just For You 😋 </h1>
                 <div className="recommendations-cards">
