@@ -57,7 +57,7 @@ const SignUp = () => {
 				<div className="form-tags">
 					<input
 						type="text"
-						className="inpt-label"
+						className="input-label"
 						placeholder="Full Name"
 						name="name"
 						value={formData.name}
@@ -66,7 +66,7 @@ const SignUp = () => {
 					/>
 					<input
 						type="email"
-						className="inpt-label"
+						className="input-label"
 						placeholder="Email Address"
 						name="email"
 						value={formData.email}
@@ -75,7 +75,7 @@ const SignUp = () => {
 					/>
 					<input
 						type="text"
-						className="inpt-label"
+						className="input-label"
 						placeholder="User Name"
 						name="customerName" // Changed to customerName to match server route
 						value={formData.customerName}
@@ -84,7 +84,7 @@ const SignUp = () => {
 					/>
 					<input
 						type="password"
-						className="inpt-label"
+						className="input-label"
 						placeholder="Password"
 						name="password"
 						value={formData.password}
@@ -93,7 +93,7 @@ const SignUp = () => {
 					/>
 					<input
 						type="password"
-						className="inpt-label"
+						className="input-label"
 						placeholder="Confirm Password"
 						name="confirmPassword"
 						value={formData.confirmPassword}

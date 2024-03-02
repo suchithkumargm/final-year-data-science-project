@@ -1,4 +1,5 @@
 .login-form{
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,12 +22,13 @@
 .login-form .form-tags{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
     width: 22rem;
 }
 
 .login-form .input-label{
     background-color: var(--background-color);
-    margin-bottom: 1.5rem;
     border-style: none;
     height:3rem;
     border-radius: 0.4rem;
@@ -61,7 +63,7 @@
 .login-form .forget-label{
     font-weight: 600;
     color: var(--secondary-color);
-    padding-bottom: 1.5rem;
+    padding: 1rem;
     align-self: flex-start;
 }
 
