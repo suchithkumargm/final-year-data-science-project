@@ -1,0 +1,176 @@
+.restaurant-page {
+    width: 70%;
+    margin: auto;
+}
+
+.restaurant-page .restaurant-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.restaurant-page .restaurant-title .restaurant-name {
+    font-weight: 600;
+    font-size: 3.125rem;
+    line-height: 4.5rem;
+    color: var(--primary-color);
+}
+
+.restaurant-page .restaurant-title .location {
+    font-weight: 400;
+    font-size: 1.85rem;
+    line-height: 3.25rem;
+    color: var(--primary-color);
+}
+
+.restaurant-page img {
+    width: 100%;
+    height: 70vh;
+    transition: all 0.5s;
+}
+
+.restaurant-page img:hover {
+    transform: scale(1.03);
+    transition: all 0.5s;
+}
+
+.restaurant-page .hotel-basic-info {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant-page .left-container .hotel-name {
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 3, 75rem;
+    color: var(--primary-color);
+}
+
+.restaurant-page .left-container .address {
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 2.375rem;
+    color: var(--black-color);
+}
+
+
+.restaurant-page .right-container a.zomato {
+    color: var(--white-color);
+    background-color: var(--zomato-color);
+    border: none;
+    border-radius: 1rem;
+    font-size: 2.5rem;
+    padding: 0 1rem;
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 700;
+    line-height: 3.56rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.restaurant-page .right-container a.zomato:hover {
+    background-color: var(--white-color);
+    color: var(--zomato-color);
+    outline: 1px solid var(--zomato-color);
+    transition: all 0.5s;
+}
+
+.restaurant-page .right-container .phone {
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: var(--black-color);
+    display: flex;
+    align-items: center;
+}
+
+.restaurant-page .right-container .phone svg {
+    padding-right: 0.7rem;
+}
+
+.restaurant-page h2 {
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 1rem 0;
+}
+
+.restaurant-page .rating .ratings {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.restaurant-page .cuisine .cuisines {
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant-page .top-pick .top-picks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant-page .top-pick .top-picks li,
+.restaurant-page .cuisine .cuisines li {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    transition: all 0.5s;
+}
+
+.restaurant-page .top-pick .top-picks li:hover,
+.restaurant-page .cuisine .cuisines li:hover {
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    transition: all 0.5s;
+    outline: 1px solid var(--primary-color);
+}
+
+.restaurant-page .side-by-side {
+    display: flex;
+    align-items: center;
+}
+
+.restaurant-page .side-by-side p{
+    padding-left: 2rem;
+    font-size: 1.2rem;
+}
+
+.restaurant-page .online-order p{
+    text-transform: uppercase;
+    color: var(--red-color);
+}
+
+.restaurant-page .book-table p{
+    text-transform: uppercase;
+    color: var(--green-color);
+}
+
+
+.restaurant-page button.back {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 3rem;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.restaurant-page button.back:hover {
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    outline: 1px solid var(--primary-color);
+    transition: all 0.5s;
+}
