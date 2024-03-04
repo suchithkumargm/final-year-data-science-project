@@ -11,6 +11,6 @@ const router = express.Router();
 
 router.post('/createNewOrder',createNewOrder)
 router.get('/getCustomerOrders/:customer_id', getCustomerOrders);
-router.get('/getRestaurantRecommendations', getRestaurantRecommendations);
+router.post('/getRestaurantRecommendations', getRestaurantRecommendations);
 
 export default router;
