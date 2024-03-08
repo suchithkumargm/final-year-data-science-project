@@ -5,6 +5,7 @@
     align-items: center;
     padding: 3rem;
     height: 70vh;
+    position: relative; /* Add this */
 }
 
 .signup-form .signup-label {
@@ -20,6 +21,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
+    position: relative; /* Add this */
 }
 
 .signup-form .input-label {
@@ -28,6 +30,7 @@
     border-radius: 0.4rem;
     width: 100%;
     height: 2.5rem;
+    position: relative; /* Add this */
 }
 
 .signup-form .input-label::placeholder {
@@ -35,6 +38,31 @@
     padding-left: 1rem;
     color: #848484;
     letter-spacing: 0.5px;
+}
+
+.signup-form .show-password-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 72%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #848484;
+    padding: 0.5rem;
+}
+.signup-form .show-password-button1 {
+    position: absolute;
+    right: 0.5rem;
+    top: 92%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #848484;
+    padding: 0.5rem;
 }
 
 .signup-form .signup-btn{

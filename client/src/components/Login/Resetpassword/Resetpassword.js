@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +9,7 @@ const Resetpassword = () => {
     const [formData, setFormData] = useState({
         newPassword: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -31,18 +31,17 @@ const Resetpassword = () => {
         });
         const json = await response.json();
         if (json.message) {
-            alert( json.message);
+            alert(json.message);
             navigate('/customer/login/');
-
-            // navigate("/customer/login/verify-otp", { state: { email: formData.email } });
-
-        }else if(json.error){
+        } else if (json.error) {
             alert(json.error)
-        }
-        
-        else {
+        } else {
             alert("Invalid Credentials!", "danger");
         }
+    };
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -53,7 +52,7 @@ const Resetpassword = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-tags">
                     <input
-                        type="text"
+                        type={showPassword ? "text" : "password"}
                         className="input-label"
                         placeholder="New Password"
                         name="newPassword"
@@ -61,7 +60,13 @@ const Resetpassword = () => {
                         onChange={handleChange}
                         required
                     />
-                    
+                    <button
+                        type="button"
+                        className="show-password-button"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? "Hide" : "Show"}
+                    </button>
                 </div>
                 <div className="login-btn">
                     <input className="l-btn" type="submit" value="Update" />
@@ -72,5 +77,3 @@ const Resetpassword = () => {
 };
 
 export default Resetpassword;
-
-

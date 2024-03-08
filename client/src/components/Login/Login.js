@@ -9,6 +9,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         username: '',
         password: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,6 +43,10 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         }
     };
 
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <div className="login-form">
             <div className="form-name">
@@ -59,7 +64,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                         required
                     />
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"} // Change type based on showPassword state
                         className="input-label"
                         placeholder="Password"
                         name="password"
@@ -67,6 +72,13 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                         onChange={handleChange}
                         required
                     />
+                    <button
+                        type="button"
+                        className="show-password-button"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? "Hide" : "Show"} 
+                    </button>
                 </div>
                 <div className="forget-label">
                     <Link to="/customer/login/forgotpassword">Forgot password?</Link>

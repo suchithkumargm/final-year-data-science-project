@@ -11,6 +11,8 @@ const SignUp = () => {
 		password: '',
 		confirmPassword: ''
 	});
+	const [showPassword, setShowPassword] = useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -48,6 +50,14 @@ const SignUp = () => {
 		}
 	};
 
+	const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleToggleConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className="signup-form">
@@ -83,7 +93,7 @@ const SignUp = () => {
 						required
 					/>
 					<input
-						type="password"
+						type={showPassword ? "text" : "password"} // Change type based on showPassword state
 						className="input-label"
 						placeholder="Password"
 						name="password"
@@ -91,8 +101,15 @@ const SignUp = () => {
 						onChange={handleInputChange}
 						required
 					/>
+					<button
+                        type="button"
+                        className="show-password-button"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? "Hide" : "Show"} 
+                    </button>
 					<input
-						type="password"
+						type={showConfirmPassword ? "text" : "password"} // Change type based on showConfirmPassword state
 						className="input-label"
 						placeholder="Confirm Password"
 						name="confirmPassword"
@@ -100,6 +117,13 @@ const SignUp = () => {
 						onChange={handleInputChange}
 						required
 					/>
+					<button
+                        type="button"
+                        className="show-password-button1"
+                        onClick={handleToggleConfirmPassword}
+                    >
+                        {showConfirmPassword ? "Hide" : "Show"} 
+                    </button>
 				</div>
 				<div className="signup-btn">
 					<input className="s-btn" type="submit" value="Sign Up" />
