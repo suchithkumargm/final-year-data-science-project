@@ -1,0 +1,78 @@
+.login-form{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .form-name{
+    font-weight: 600;
+    color: var(--secondary-color);
+    padding-bottom: 1.5rem;
+}
+
+.login-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form .form-tags{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    width: 22rem;
+    padding-bottom: 1rem;
+
+}
+
+.login-form .input-label{
+    background-color: var(--background-color);
+    border-style: none;
+    height:3rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+}
+
+.login-form .input-label::placeholder{
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #848484;
+    letter-spacing: 0.5px;
+}
+
+.login-form .l-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-style: none;
+    border-radius:0.4rem ;
+    width: 22rem;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+.login-form .l-btn:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.login-form .forget-label{
+    font-weight: 600;
+    color: var(--secondary-color);
+    padding: 1rem;
+    align-self: flex-start;
+}
+
+.login-form .forget-label:hover{
+    color: var(--primary-color);
+}
+
+.login-form .page-name{
+    font-size: 2.4rem;
+}

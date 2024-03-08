@@ -2,6 +2,7 @@ import express from 'express';
 import { body } from 'express-validator';
 
 import { createCustomer, loginCustomer, getCustomer } from '../../controllers/auth/customerAuthController.js';
+import{forgotPassword,verifyOTPHandler,resetPasswordHandler} from '../../controllers/email/sendEmail.js'
 import fetchCustomer from '../../middleware/fetchCustomer.js';
 
 const router = express.Router();
@@ -26,6 +27,29 @@ router.post(
         body('password', 'Password should be at least 5 characters').isLength({ min: 5 }),
     ],
     loginCustomer
+);
+router.post(
+    '/forgotPassword/',
+    [
+        body('email', 'Enter a valid email').isEmail(),
+    ],
+    forgotPassword
+);
+router.post(
+    '/forgotPassword/verify-otp/:email',
+    [
+        // body('email', 'Enter a valid email').isEmail(),
+        body('custotp', 'Enter a valid otp'),
+    ],
+    verifyOTPHandler
+);
+router.post(
+    '/forgotPassword/reset-password/:email',
+    [
+        // body('email', 'Enter a valid email').isEmail(),
+        body('newPassword', 'Enter a valid password').isLength({ min: 5 }),
+    ],
+    resetPasswordHandler
 );
 
 // ROUTE 3: Get logged-in User Details using: POST "/auth/user/getuser". Login required

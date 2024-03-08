@@ -69,7 +69,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                     />
                 </div>
                 <div className="forget-label">
-                    <Link to="#">Forgot password?</Link>
+                    <Link to="/customer/login/forgotpassword">Forgot password?</Link>
                 </div>
                 <div className="login-btn">
                     <input className="l-btn" type="submit" value="Login" />
