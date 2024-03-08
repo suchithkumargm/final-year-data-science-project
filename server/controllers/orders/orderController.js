@@ -74,55 +74,56 @@ async function findTopCuisinesByCustomer(customer_id) {
 }
 
 async function findTopRestaurantsByCuisineAndLocation(topCuisines, location) {
-    // Find at least 4 restaurants with matching cuisines in the specified location
-    let topRestaurants = await Restaurant.find(
-      { cuisines: { $regex: new RegExp(topCuisines.join('|'), 'i') }, location },
-      { restaurant_id: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Projection for necessary fields
+  // Find at least 4 restaurants with matching cuisines in the specified location
+  let topRestaurants = await Restaurant.find(
+    { cuisines: { $regex: new RegExp(topCuisines.join('|'), 'i') }, location },
+    { restaurant_id: 1, name: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Include 'name' field in projection
+  )
+    .sort({ rating: -1 })
+    .limit(4);
+
+  const remainingCount = Math.max(0, 4 - topRestaurants.length);
+
+  // If there are less than 4, fetch additional top-rated restaurants from any location
+  if (remainingCount > 0) {
+    const additionalRestaurants = await Restaurant.find(
+      { restaurant_id: { $nin: topRestaurants.map(restaurant => restaurant.restaurant_id) || [] } },
+      { restaurant_id: 1, name: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Include 'name' field in projection
     )
       .sort({ rating: -1 })
-      .limit(4);
-  
-    const remainingCount = Math.max(0, 4 - topRestaurants.length);
-  
-    // If there are less than 4, fetch additional top-rated restaurants from any location
-    if (remainingCount > 0) {
-      const additionalRestaurants = await Restaurant.find(
-        { restaurant_id: { $nin: topRestaurants.map(restaurant => restaurant.restaurant_id) || [] } },
-        { restaurant_id: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Projection for necessary fields
-      )
-        .sort({ rating: -1 })
-        .limit(remainingCount);
-  
-      topRestaurants = topRestaurants.concat(additionalRestaurants);
-    }
-  
-    // If still less than 4, fetch additional top-rated restaurants from any location
-    if (topRestaurants.length < 4) {
-      const additionalRestaurantsFromAnyLocation = await Restaurant.find(
-        { restaurant_id: { $nin: topRestaurants.map(restaurant => restaurant.restaurant_id) || [] } },
-        { restaurant_id: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Projection for necessary fields
-      )
-        .sort({ rating: -1 })
-        .limit(4 - topRestaurants.length);
-  
-      topRestaurants = topRestaurants.concat(additionalRestaurantsFromAnyLocation);
-    }
-  
-    // If still less than 4, fetch additional restaurants with matching cuisines from any location
-    if (topRestaurants.length < 4) {
-      const additionalCuisineMatchedRestaurants = await Restaurant.find(
-        { cuisines: { $regex: new RegExp(topCuisines.join('|'), 'i') }, restaurant_id: { $nin: topRestaurants.map(restaurant => restaurant.restaurant_id) || [] } },
-        { restaurant_id: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Projection for necessary fields
-      )
-        .sort({ rating: -1 })
-        .limit(4 - topRestaurants.length);
-  
-      topRestaurants = topRestaurants.concat(additionalCuisineMatchedRestaurants);
-    }
-  
-    // Ensure the final result contains at least 4 restaurants
-    return topRestaurants.slice(0, 4);
+      .limit(remainingCount);
+
+    topRestaurants = topRestaurants.concat(additionalRestaurants);
   }
+
+  // If still less than 4, fetch additional top-rated restaurants from any location
+  if (topRestaurants.length < 4) {
+    const additionalRestaurantsFromAnyLocation = await Restaurant.find(
+      { restaurant_id: { $nin: topRestaurants.map(restaurant => restaurant.restaurant_id) || [] } },
+      { restaurant_id: 1, name: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Include 'name' field in projection
+    )
+      .sort({ rating: -1 })
+      .limit(4 - topRestaurants.length);
+
+    topRestaurants = topRestaurants.concat(additionalRestaurantsFromAnyLocation);
+  }
+
+  // If still less than 4, fetch additional restaurants with matching cuisines from any location
+  if (topRestaurants.length < 4) {
+    const additionalCuisineMatchedRestaurants = await Restaurant.find(
+      { cuisines: { $regex: new RegExp(topCuisines.join('|'), 'i') }, restaurant_id: { $nin: topRestaurants.map(restaurant => restaurant.restaurant_id) || [] } },
+      { restaurant_id: 1, name: 1, cuisines: 1, location: 1, rating: 1, _id: 0 } // Include 'name' field in projection
+    )
+      .sort({ rating: -1 })
+      .limit(4 - topRestaurants.length);
+
+    topRestaurants = topRestaurants.concat(additionalCuisineMatchedRestaurants);
+  }
+
+  // Ensure the final result contains at least 4 restaurants
+  return topRestaurants.slice(0, 4);
+}
+
   
 
 
@@ -133,10 +134,7 @@ export const getRestaurantRecommendations = async (req, res) => {
         const topCuisines = await findTopCuisinesByCustomer(customer_id, location);
         const topRestaurants = await findTopRestaurantsByCuisineAndLocation(topCuisines, location);
 
-        res.json({
-            topCuisines,
-            topRestaurants
-        });
+        res.json(topRestaurants);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
