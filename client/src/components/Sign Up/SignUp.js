@@ -38,7 +38,6 @@ const SignUp = () => {
 				navigate('/customer/login');
 
 			} else {
-				console.log('Failure:', json.error);
 				alert(json.error);
 
 			}

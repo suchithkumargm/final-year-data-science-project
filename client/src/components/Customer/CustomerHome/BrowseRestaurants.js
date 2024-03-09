@@ -11,11 +11,10 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 	const [searchTerm, setSearchTerm] = useState('');
 
 	useEffect(() => {
-		console.log(selectedLocation);
+
 		//call get all restaurants API
 		const fetchRestaurants = async () => {
 			try {
-				console.log("inside fetch restaurants");
 				const response = await fetch(`http://localhost:5000/customers/restaurants/getallrestaurant/${selectedLocation}`, {
 					method: 'GET',
 					headers: {
@@ -23,11 +22,9 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 					},
 				});
 				const fetchedRestaurants = await response.json();
-				console.log("fetched Restaurants", fetchedRestaurants);
 
 				if (fetchedRestaurants) {
 					setRestaurants(fetchedRestaurants);
-					console.log("rest state", restaurants); // Log the updated state directly
 				}
 			} catch (error) {
 				console.error('Error fetching restaurants:', error);

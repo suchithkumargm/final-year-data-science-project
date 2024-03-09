@@ -28,6 +28,14 @@ const Restaurant = () => {
                 const restaurant = await response.json();
 
                 if (restaurant) {
+                    const cuisine = restaurant.cuisines;
+                    const correctedCuisines = cuisine.replace(/'/g, '"');
+                    restaurant.cuisines = JSON.parse(correctedCuisines).slice(0, 3);
+
+                    const dish = restaurant.dish_liked;
+                    const dishes = dish.replace(/'/g, '"');
+                    restaurant.dish_liked = JSON.parse(dishes).slice(0, 3);
+
                     setRestaurantState(restaurant);
                 }
             } catch (error) {
@@ -36,10 +44,6 @@ const Restaurant = () => {
         };
 
         fetchRestaurant()
-        // console.log(restaurantState);
-        // const cuisinesArray = restaurantState.cuisines.replace(/'/g, '').replace(/\[|\]/g, '').split(',');
-        // const displayedCuisines = cuisinesArray.slice(0, 2);
-        // console.log(displayedCuisines);
     }, []);
 
     return (
@@ -77,28 +81,27 @@ const Restaurant = () => {
                     </div>
                 </div>
 
-                <div class="cuisine">
-                    <h2>Cuisines</h2>
-                    {/* <ul class="cuisines">
-                        <li>North Indian</li>
-                        <li>North Indian</li>
-                        <li>North Indian</li>
-                    </ul> */}
-                    {/* <ul>
-                        {cuisines.map((cuisine, index) => (
-                            <li key={index}>{cuisine}</li>
-                        ))}
-                    </ul> */}
-                </div>
+                {restaurantState.cuisines &&
+                    <div class="cuisine">
+                        <h2>Cuisines</h2>
+                        <ul className='cuisines'>
+                            {restaurantState.cuisines.map((cuisine, index) => (
+                                <li key={index}>{cuisine}</li>
+                            ))}
+                        </ul>
+                    </div>
+                }
 
-                <div class="top-pick">
-                    <h2>Top Picks</h2>
-                    <ul class="top-picks">
-                        <li>North Indian</li>
-                        <li>North Indian</li>
-                        <li>North Indian</li>
-                    </ul>
-                </div>
+                {restaurantState.dish_liked &&
+                    <div class="top-pick">
+                        <h2>Top Picks</h2>
+                        <ul class="top-picks">
+                            {restaurantState.dish_liked.map((dish, index) => (
+                                <li key={index}>{dish}</li>
+                            ))}
+                        </ul>
+                    </div>
+                }
 
                 <div class="cost side-by-side">
                     <h2>Average Cost :</h2>
