@@ -158,7 +158,7 @@ export const verifyOTPHandler = async (req, res) => {
     return res.status(200).json({ message: "OTP verified successfully" });
   } catch (error) {
     console.error('Error occurred:', error);
-    res.status(500).json({ message: 'Failed to verify OTP' });
+    res.status(500).json({ error: 'Failed to verify OTP' });
   }
 };
 

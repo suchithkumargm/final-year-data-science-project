@@ -30,6 +30,7 @@ const VerifyOtp = () => {
             body: JSON.stringify({ custotp: formData.custotp }) 
         });
         const json = await response.json();
+        console.log("jk",json)
         if (json.message) {
             alert( json.message);
             navigate(`/customer/login/reset-password/${email}`);
