@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import './CustomerHome.css';
 import PopUp from '../PopUp/PopUp.js';
+import BrowseRestaurants from './BrowseRestaurants.js';
 
 const CustomerHome = () => {
     const [isPopupOpen, setPopupOpen] = useState(true);
     const [selectedLocation, setSelectedLocation] = useState('');
-    const [recommendations, setRecommendations] = useState({ topRestaurants: [] });
+    const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("inside fetch data");
                 const response = await fetch('http://localhost:5000/customers/orders/getRestaurantRecommendations', {
                     method: 'POST',
                     headers: {
@@ -22,7 +22,6 @@ const CustomerHome = () => {
                 });
 
                 const fetchedRecommendations = await response.json();
-                console.log(fetchedRecommendations);
 
                 if (fetchedRecommendations) {
                     setRecommendations(fetchedRecommendations);
@@ -44,20 +43,20 @@ const CustomerHome = () => {
     return (
         <>
             {isPopupOpen && <PopUp onSave={handleSave} />}
-            {console.log("reco", recommendations)}
-            {selectedLocation && (
-                < div className="recommendations">
+            {recommendations && (
+                <div className="recommendations">
                     <h1>Personalized Recommendations Just For You 😋 </h1>
-                    {console.log("checking", recommendations.topRestaurants)}
                     <div className="recommendations-cards">
                         {recommendations.map((restaurant, index) => (
-                            <Link to="#" key={index} className="card">
-                                <p>{restaurant.name}</p>
+                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index+1}`}>
+                                <p>{restaurant.name.substring(0,12)}..</p>
                             </Link>
                         ))}
                     </div>
-                </div >
+                </div>
             )}
+
+            <BrowseRestaurants selectedLocation={selectedLocation}/>
         </>
     );
 };

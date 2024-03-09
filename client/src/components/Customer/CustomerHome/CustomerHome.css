@@ -55,6 +55,7 @@ input.search::after {
 }
 
 .recommendations .recommendations-cards .card {
+    background-color: var(--background-color);
     width: 20vw;
     height: 40vh;
     position: relative;
