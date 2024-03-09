@@ -55,6 +55,11 @@
     color: var(--black-color);
 }
 
+.restaurant-page .right-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
 
 .restaurant-page .right-container a.zomato {
     color: var(--white-color);
@@ -85,10 +90,11 @@
     color: var(--black-color);
     display: flex;
     align-items: center;
+    text-align: end;
 }
 
 .restaurant-page .right-container .phone svg {
-    padding-right: 0.7rem;
+    padding-left: 3rem;
 }
 
 .restaurant-page h2 {
