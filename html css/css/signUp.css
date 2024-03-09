@@ -45,3 +45,29 @@ main .s-btn:hover {
     outline: 2px solid var(--primary-color);
     transition: all 0.5s;
 }
+
+.fa{
+    padding-bottom: 17px;
+    padding-bottom: 17px;
+    margin-left: -18px;
+    margin-bottom: 6px;
+    padding-bottom: -9px;
+}
+
+.pass{
+    display: flex;
+    flex-direction: row;
+}
+
+#confirm-password{
+    width: 380px;  
+}
+#confirm-eye-icon{
+    padding-bottom: 17px;
+    margin-left: -18px;
+    margin-bottom: 6px;
+    padding-bottom: -9px;
+}
+#password{
+    width: 380px;
+}
