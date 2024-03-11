@@ -44,7 +44,7 @@ const CustomerHome = () => {
         <>
             {isPopupOpen && <PopUp onSave={handleSave} />}
             {recommendations && (
-                <div className="recommendations">
+                <div className="recommendations" >
                     <h1>Personalized Recommendations Just For You 😋 </h1>
                     <div className="recommendations-cards">
                         {recommendations.map((restaurant, index) => (
