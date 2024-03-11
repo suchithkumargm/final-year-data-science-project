@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './CustomerHome.css';
 import PopUp from '../PopUp/PopUp.js';
@@ -43,20 +43,20 @@ const CustomerHome = () => {
     return (
         <>
             {isPopupOpen && <PopUp onSave={handleSave} />}
-            {recommendations && (
+            {recommendations ? (
                 <div className="recommendations" >
                     <h1>Personalized Recommendations Just For You 😋 </h1>
                     <div className="recommendations-cards">
                         {recommendations.map((restaurant, index) => (
-                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index+1}`}>
-                                <p>{restaurant.name.substring(0,12)}..</p>
+                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index + 1}`}>
+                                <p>{restaurant.name.substring(0, 12)}..</p>
                             </Link>
                         ))}
                     </div>
                 </div>
-            )}
+            ) : (<div class="loading-spinner"></div>)}
 
-            <BrowseRestaurants selectedLocation={selectedLocation}/>
+            <BrowseRestaurants selectedLocation={selectedLocation} handleRestaurantClick/>
         </>
     );
 };
