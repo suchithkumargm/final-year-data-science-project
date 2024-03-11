@@ -20,6 +20,9 @@ body {
     --background-color:#efefef;
     --black-color: #000000;
     --white-color: #FFFFFF;
+    --zomato-color: #FE4C4C;
+    --red-color: red;
+    --green-color: green;
 }
 
 a {

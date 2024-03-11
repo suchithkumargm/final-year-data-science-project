@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer.js';
 import CustomerHome from './components/Customer/CustomerHome/CustomerHome.js';
 import SignUp from './components/Sign Up/SignUp.js';
 import Login from './components/Login/Login.js';
+import Restaurant from './components/Customer/Restaurant/Restaurant.js';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,6 +23,7 @@ const App = () => {
 					<Route path="/customer/createCustomer" element={<SignUp />} />
 					<Route path="/customer/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
 					<Route path="/customers/browse-restaurants" element={<CustomerHome />} />
+					<Route path="/customers/browse-restaurants/:id" element={<Restaurant />} />
 				</Routes>
 				<Footer />
 			</Router >

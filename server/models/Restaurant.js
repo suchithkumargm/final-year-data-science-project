@@ -17,10 +17,10 @@ const RestaurantSchema = new Schema({
         type: String
     },
     online_order: {
-        type: Boolean
+        type: String
     },
     book_table: {
-        type: Boolean
+        type: String
     },
     rating: {
         type: Number

@@ -11,11 +11,10 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 	const [searchTerm, setSearchTerm] = useState('');
 
 	useEffect(() => {
-		console.log(selectedLocation);
+
 		//call get all restaurants API
 		const fetchRestaurants = async () => {
 			try {
-				console.log("inside fetch restaurants");
 				const response = await fetch(`http://localhost:5000/customers/restaurants/getallrestaurant/${selectedLocation}`, {
 					method: 'GET',
 					headers: {
@@ -23,11 +22,9 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 					},
 				});
 				const fetchedRestaurants = await response.json();
-				console.log("fetched Restaurants", fetchedRestaurants);
 
 				if (fetchedRestaurants) {
 					setRestaurants(fetchedRestaurants);
-					console.log("rest state", restaurants); // Log the updated state directly
 				}
 			} catch (error) {
 				console.error('Error fetching restaurants:', error);
@@ -52,8 +49,33 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 	const currentItems = filteredRestaurants.slice(indexOfFirstItem, indexOfLastItem);
 
-	const handleRestaurantClick = () => {
+	const handleRestaurantClick = async (restaurant_id, name) => {
+		try {
+			// Get the current date
+			const currentDate = new Date();
 
+			// Format the date as dd-mm-yyyy
+			const day = currentDate.getDate().toString().padStart(2, '0');
+			const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+			const year = currentDate.getFullYear();
+
+			const formattedDate = `${day}-${month}-${year}`;
+
+			const response = await fetch(`http://localhost:5000/customers/orders/createNewOrder`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ customer_id: parseInt(localStorage.getItem('customerId')), restaurant_id: restaurant_id, name: name, location: selectedLocation, date: formattedDate })
+			});
+			const res = await response.json();
+
+			if (res) {
+				setRestaurants(res);
+			}
+		} catch (error) {
+			console.error('Error creating orer:', error);
+		}
 	}
 
 	return (
@@ -72,7 +94,7 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 						const displayedCuisines = cuisinesArray.slice(0, 2);
 
 						return (
-							<Link key={restaurant.restaurant_id} to={`${restaurant.restaurant_id}`} onClick={() => handleRestaurantClick(restaurant.restaurant_id)}>
+							<Link key={restaurant.restaurant_id} to={`${restaurant.restaurant_id}`} onClick={() => handleRestaurantClick(restaurant.restaurant_id, restaurant.name)}>
 								<div className="restaurant card">
 									<div class="image"></div>
 									<div class="details">

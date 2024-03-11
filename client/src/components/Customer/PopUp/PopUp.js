@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import './PopUp.css';
-
 const PopupWithDropdown = ({ onSave }) => {
 
     const [selectedLocation, setSelectedOption] = useState('');
