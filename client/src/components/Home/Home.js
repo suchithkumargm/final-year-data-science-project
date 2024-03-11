@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Home.css';
 import images from '../../assets/images.js';
 
 const Home = () => {
+
+    useEffect(() => {
+        const scrollers = document.querySelectorAll('.scroller');
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            addAnimation();
+        }
+
+        function addAnimation() {
+            scrollers.forEach(scroller => {
+                scroller.setAttribute('data-animated', true);
+
+                const scrollerInner = scroller.querySelector('.scroller-inner');
+                const scrollerContent = Array.from(scrollerInner.children);
+
+                scrollerContent.forEach(item => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute('aria-hidden', true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
+        }
+    }, []); // Empty dependency array to run the effect only once on mount
+
+
     return (
         <>
             <div class="outer-scrolling-container">

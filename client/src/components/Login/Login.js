@@ -22,9 +22,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         console.log('Submitting form with data:', formData);
         // Convert username to lowercase
         const username = formData.username.toLowerCase();
+
         const response = await fetch('http://localhost:5000/auth/customer/login', {
             method: 'POST',
             headers: {

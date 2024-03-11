@@ -55,6 +55,7 @@ input.search::after {
 }
 
 .recommendations .recommendations-cards .card {
+    background-color: var(--background-color);
     width: 20vw;
     height: 40vh;
     position: relative;
@@ -196,3 +197,22 @@ input.search::after {
     border: none;
     color: var(--white-color);
 }
+
+.loading-spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-top: 8px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

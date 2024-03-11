@@ -43,7 +43,6 @@ const SignUp = () => {
 				alert("User Account created Successfully");
 				navigate('/customer/login');
 			} else {
-				console.log('Failure:', json.error);
 				alert(json.error);
 			}
 		} catch (error) {
