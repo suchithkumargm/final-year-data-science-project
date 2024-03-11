@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Eye ,EyeOff } from 'lucide-react';
 import './Signup.css';
 
 const SignUp = () => {
@@ -11,6 +12,8 @@ const SignUp = () => {
 		password: '',
 		confirmPassword: ''
 	});
+	const [showPassword, setShowPassword] = useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -19,7 +22,10 @@ const SignUp = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const { name, email, customerName, password, confirmPassword } = formData;
+		let { name, email, customerName, password, confirmPassword } = formData;
+		// Convert email and customerName to lowercase
+		email = email.toLowerCase();
+		customerName = customerName.toLowerCase();
 		if (password !== confirmPassword) {
 			alert('Passwords do not match');
 			return;
@@ -30,22 +36,28 @@ const SignUp = () => {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ name, email, customerName, password }) // Updated key to customerName
+				body: JSON.stringify({ name, email, customerName, password })
 			});
 			const json = await response.json();
 			if (json.success) {
-				alert("User Account created Successfully")
+				alert("User Account created Successfully");
 				navigate('/customer/login');
-
 			} else {
 				alert(json.error);
-
 			}
 		} catch (error) {
 			console.error('Error:', error);
-
 		}
 	};
+	
+
+	const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleToggleConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -82,7 +94,7 @@ const SignUp = () => {
 						required
 					/>
 					<input
-						type="password"
+						type={showPassword ? "text" : "password"} // Change type based on showPassword state
 						className="input-label"
 						placeholder="Password"
 						name="password"
@@ -90,8 +102,15 @@ const SignUp = () => {
 						onChange={handleInputChange}
 						required
 					/>
+					<button
+                        type="button"
+                        className="show-password-button"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? <EyeOff/> : <Eye/>} 
+                    </button>
 					<input
-						type="password"
+						type={showConfirmPassword ? "text" : "password"} // Change type based on showConfirmPassword state
 						className="input-label"
 						placeholder="Confirm Password"
 						name="confirmPassword"
@@ -99,6 +118,13 @@ const SignUp = () => {
 						onChange={handleInputChange}
 						required
 					/>
+					<button
+                        type="button"
+                        className="show-password-button1"
+                        onClick={handleToggleConfirmPassword}
+                    >
+                        {showConfirmPassword ? <EyeOff/> : <Eye/>} 
+                    </button>
 				</div>
 				<div className="signup-btn">
 					<input className="s-btn" type="submit" value="Sign Up" />

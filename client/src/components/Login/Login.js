@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
+import { Eye ,EyeOff } from 'lucide-react';
 import './login.css';
 
 const Login = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -9,6 +10,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         username: '',
         password: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,13 +22,17 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
+        console.log('Submitting form with data:', formData);
+        // Convert username to lowercase
+        const username = formData.username.toLowerCase();
+
         const response = await fetch('http://localhost:5000/auth/customer/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ customerName: formData.username, password: formData.password }) // 
+            body: JSON.stringify({ customerName: username, password: formData.password })
         });
         const json = await response.json();
         if (json.success) {
@@ -36,10 +42,14 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
             localStorage.setItem('customerId', json.customerId);
             alert("Logged in Successfully!", "success");
             navigate("/");
-
         } else {
             alert("Invalid Credentials!", "danger");
         }
+    };
+    
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -59,7 +69,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                         required
                     />
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"} // Change type based on showPassword state
                         className="input-label"
                         placeholder="Password"
                         name="password"
@@ -67,9 +77,19 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                         onChange={handleChange}
                         required
                     />
+                    <button
+                        type="button"
+                        className="show-password-button"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? <EyeOff/> : <Eye/>} 
+                    </button>
                 </div>
                 <div className="forget-label">
-                    <Link to="#">Forgot password?</Link>
+                    <Link to="/customer/login/forgotpassword">Forgot password?</Link>
+                </div>
+                <div className="forget-label">
+                    <Link to="/customer/login/forgotuserName">Forgot UserName?</Link>
                 </div>
                 <div className="login-btn">
                     <input className="l-btn" type="submit" value="Login" />
