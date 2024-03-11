@@ -51,8 +51,10 @@ import nodemailer from 'nodemailer';
 import Customer from '../../models/Customer.js';
 import bcrypt from 'bcryptjs';
 
-// Declare email globally
-let email;
+// Import required modules and dependencies
+
+// Declare a map to store email-OTP pairs
+const otpMap = new Map();
 
 // Function to generate OTP
 function generateOTP() {
@@ -76,8 +78,8 @@ export const sendEmailWithOTP = async (email, req) => {
     // Generate OTP
     const otp = generateOTP();
 
-    // Store OTP in session
-    req.session.generatedOTP = otp;
+    // Store OTP in the map along with email
+    otpMap.set(email, otp);
 
     // Create a Nodemailer transporter
     let transporter = nodemailer.createTransport({
@@ -117,7 +119,7 @@ export const forgotPassword = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    email = req.body.email; // Assign the email entered by the user to the global variable
+    const email = req.body.email; // Get the email entered by the user
 
     // Check if the email exists in the database
     const customer = await findUserByEmail(email);
@@ -127,15 +129,13 @@ export const forgotPassword = async (req, res) => {
 
     // If the email is found in the database, proceed to send the OTP email
     const result = await sendEmailWithOTP(email, req);
-    console.log(req.session.generatedOTP)
+
     res.status(200).json(result);
   } catch (error) {
     console.error('Error occurred:', error);
     res.status(500).json({ message: 'Failed to process request' });
   }
 };
-
-// Import required modules and dependencies
 
 // Function to verify OTP
 const verifyOTP = (enteredOTP, expectedOTP) => {
@@ -145,15 +145,21 @@ const verifyOTP = (enteredOTP, expectedOTP) => {
 // Route handler to verify OTP
 export const verifyOTPHandler = async (req, res) => {
   try {
+    const {email }=req.params;
     const { custotp } = req.body;
 
+    // Retrieve the expected OTP from the map based on the email
+    const expectedOTP = otpMap.get(email);
+
     // Verify OTP
-    console.log(req.session.generatedOTP)
-    const otpMatched = verifyOTP(custotp, req.session.generatedOTP); // Compare with OTP stored in session
+    const otpMatched = verifyOTP(custotp, expectedOTP);
     
     if (!otpMatched) {
       return res.status(400).json({ error: "Invalid OTP" });
     }
+
+    // Optionally, you can remove the email-OTP pair from the map once it's verified
+    otpMap.delete(email);
 
     return res.status(200).json({ message: "OTP verified successfully" });
   } catch (error) {
@@ -175,15 +181,75 @@ export const resetPasswordHandler = async (req, res) => {
       return res.status(400).json({ error: "Sorry, no user with this email found!" });
     }
 
+    // console.log(newPassword)
     // Update password in the database
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
     customer.password = hashedPassword;
     await customer.save();
+    // console.log(customer)
 
     return res.status(200).json({ message: "Password updated successfully" });
   } catch (error) {
     console.error('Error occurred:', error);
     res.status(500).json({ message: 'Failed to reset password' });
+  }
+};
+
+export const sendEmailWithUserName = async (email, username) => {
+  try {
+    // Create a Nodemailer transporter
+    let transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'shashidhar09735@gmail.com',
+        pass: 'ttrv ufjc eveo kxos'
+      }
+    });
+
+    // Define email options
+    let mailOptions = {
+      from: '"Shashidhar AS" <Shashidhar09735@gmail.com>',
+      to: email,
+      subject: 'ZOMATO HELP || Email for getting USERNAME',
+      text: `Hello, This is the username for your Zomato Help account: ${username}`,
+      html: `<b>Hi, this is the Username for Your Zomato Help account: ${username}</b>`
+    };
+
+    // Send mail with defined transport object
+    let info = await transporter.sendMail(mailOptions);
+
+    console.log('Message sent: %s', info.messageId);
+    return { message: 'Email with UserName sent successfully' };
+  } catch (error) {
+    console.error('Error occurred:', error);
+    throw error;
+  }
+};
+
+
+export const forgotuserName = async (req, res) => {
+  try {
+    // Validate request body
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const email = req.body.email; // Get the email entered by the user
+
+    // Check if the email exists in the database
+    const customer = await findUserByEmail(email);
+    if (!customer) {
+      return res.status(400).json({ error: "Sorry, no user with this email found!" });
+    }
+    const username = customer.customerName;
+    // If the email is found in the database, proceed to send the OTP email
+    const result = await sendEmailWithUserName(email, username);
+
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error occurred:', error);
+    res.status(500).json({ message: 'Failed to process request' });
   }
 };

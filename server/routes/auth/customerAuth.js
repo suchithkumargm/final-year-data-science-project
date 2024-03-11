@@ -2,7 +2,7 @@ import express from 'express';
 import { body } from 'express-validator';
 
 import { createCustomer, loginCustomer, getCustomer } from '../../controllers/auth/customerAuthController.js';
-import{forgotPassword,verifyOTPHandler,resetPasswordHandler} from '../../controllers/email/sendEmail.js'
+import{forgotPassword,verifyOTPHandler,resetPasswordHandler,forgotuserName} from '../../controllers/email/sendEmail.js'
 import fetchCustomer from '../../middleware/fetchCustomer.js';
 
 const router = express.Router();
@@ -50,6 +50,14 @@ router.post(
         body('newPassword', 'Enter a valid password').isLength({ min: 5 }),
     ],
     resetPasswordHandler
+);
+
+router.post(
+    '/forgotuserName/',
+    [
+        body('email', 'Enter a valid email').isEmail(),
+    ],
+    forgotuserName
 );
 
 // ROUTE 3: Get logged-in User Details using: POST "/auth/user/getuser". Login required

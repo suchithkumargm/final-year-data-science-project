@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Eye ,EyeOff } from 'lucide-react';
 import './Signup.css';
 
 const SignUp = () => {
@@ -21,7 +22,10 @@ const SignUp = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const { name, email, customerName, password, confirmPassword } = formData;
+		let { name, email, customerName, password, confirmPassword } = formData;
+		// Convert email and customerName to lowercase
+		email = email.toLowerCase();
+		customerName = customerName.toLowerCase();
 		if (password !== confirmPassword) {
 			alert('Passwords do not match');
 			return;
@@ -32,23 +36,21 @@ const SignUp = () => {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ name, email, customerName, password }) // Updated key to customerName
+				body: JSON.stringify({ name, email, customerName, password })
 			});
 			const json = await response.json();
 			if (json.success) {
-				alert("User Account created Successfully")
+				alert("User Account created Successfully");
 				navigate('/customer/login');
-
 			} else {
 				console.log('Failure:', json.error);
 				alert(json.error);
-
 			}
 		} catch (error) {
 			console.error('Error:', error);
-
 		}
 	};
+	
 
 	const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -106,7 +108,7 @@ const SignUp = () => {
                         className="show-password-button"
                         onClick={handleTogglePassword}
                     >
-                        {showPassword ? "Hide" : "Show"} 
+                        {showPassword ? <EyeOff/> : <Eye/>} 
                     </button>
 					<input
 						type={showConfirmPassword ? "text" : "password"} // Change type based on showConfirmPassword state
@@ -122,7 +124,7 @@ const SignUp = () => {
                         className="show-password-button1"
                         onClick={handleToggleConfirmPassword}
                     >
-                        {showConfirmPassword ? "Hide" : "Show"} 
+                        {showConfirmPassword ? <EyeOff/> : <Eye/>} 
                     </button>
 				</div>
 				<div className="signup-btn">

@@ -1,16 +1,12 @@
-import { useParams } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Eye ,EyeOff } from 'lucide-react';
-import './Resetpassword.css';
+import './ForgotUserName.css';
 
-const Resetpassword = () => {
-    const { email } = useParams();
+const ForgotUserName = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        newPassword: ''
+        email: ''
     });
-    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,61 +19,55 @@ const Resetpassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Submitting form with data:', formData);
-        const response = await fetch(`http://localhost:5000/auth/customer/forgotPassword/reset-password/${email}`, {
+        // Convert email to lowercase
+        const email = formData.email.toLowerCase();
+        const response = await fetch('http://localhost:5000/auth/customer/forgotuserName/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ newPassword: formData.newPassword }) // 
+            body: JSON.stringify({ email }) // Pass the lowercase email
         });
         const json = await response.json();
         if (json.message) {
-            alert(json.message);
+            alert( json.message);
             navigate('/customer/login/');
-        } else if (json.error) {
-            alert(json.error)
+        } else if(json.error){
+            alert(json.error);
+            navigate('/customer/createCustomer');
         } else {
             alert("Invalid Credentials!", "danger");
         }
     };
-
-    const handleTogglePassword = () => {
-        setShowPassword(!showPassword);
-    };
+    
 
     return (
         <div className="login-form">
             <div className="form-name">
-                <p className="page-name">Reset Password</p>
+                <p className="page-name">Forgot UserName</p>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="form-tags">
                     <input
-                        type={showPassword ? "text" : "password"}
+                        type="text"
                         className="input-label"
-                        placeholder="New Password"
-                        name="newPassword"
-                        value={formData.newPassword}
+                        placeholder="Email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                         required
                     />
-                    <button
-                        type="button"
-                        className="show-password-button"
-                        onClick={handleTogglePassword}
-                    >
-                        {showPassword ? <EyeOff/> : <Eye/>}
-                    </button>
                 </div>
                 <div className="data">
-                    <p> Reset the password</p>
+                    <p>We’ll send your UserName to this email  if it matches an existing ZomatoHelp account.</p>
                 </div>
                 <div className="login-btn">
-                    <input className="l-btn" type="submit" value="Update" />
+                    <input className="l-btn" type="submit" value="Send " />
                 </div>
             </form>
         </div>
     );
 };
 
-export default Resetpassword;
+export default ForgotUserName;
+

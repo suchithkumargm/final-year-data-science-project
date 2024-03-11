@@ -19,28 +19,27 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Submitting form with data:', formData);
+        // Convert email to lowercase
+        const email = formData.email.toLowerCase();
         const response = await fetch('http://localhost:5000/auth/customer/forgotPassword/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email: formData.email }) // 
+            body: JSON.stringify({ email }) // Pass the lowercase email
         });
         const json = await response.json();
         if (json.message) {
             alert( json.message);
-            navigate(`/customer/login/verify-otp/${formData.email}`);
-
-            // navigate("/customer/login/verify-otp", { state: { email: formData.email } });
-
-        }else if(json.error){
-            alert(json.error)
-        }
-        
-        else {
+            navigate(`/customer/login/verify-otp/${email}`);
+        } else if(json.error){
+            alert(json.error);
+            navigate('/customer/createCustomer');
+        } else {
             alert("Invalid Credentials!", "danger");
         }
     };
+    
 
     return (
         <div className="login-form">
@@ -58,6 +57,9 @@ const ForgotPassword = () => {
                         onChange={handleChange}
                         required
                     />
+                </div>
+                <div className="data">
+                    <p>We’ll send a verification otp to this email  if it matches an existing ZomatoHelp account.</p>
                 </div>
                 <div className="login-btn">
                     <input className="l-btn" type="submit" value="Send OTP" />

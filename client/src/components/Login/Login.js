@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
+import { Eye ,EyeOff } from 'lucide-react';
 import './login.css';
 
 const Login = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -22,12 +23,14 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Submitting form with data:', formData);
+        // Convert username to lowercase
+        const username = formData.username.toLowerCase();
         const response = await fetch('http://localhost:5000/auth/customer/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ customerName: formData.username, password: formData.password }) // 
+            body: JSON.stringify({ customerName: username, password: formData.password })
         });
         const json = await response.json();
         if (json.success) {
@@ -37,11 +40,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
             localStorage.setItem('customerId', json.customerId);
             alert("Logged in Successfully!", "success");
             navigate("/");
-
         } else {
             alert("Invalid Credentials!", "danger");
         }
     };
+    
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -77,11 +80,14 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                         className="show-password-button"
                         onClick={handleTogglePassword}
                     >
-                        {showPassword ? "Hide" : "Show"} 
+                        {showPassword ? <EyeOff/> : <Eye/>} 
                     </button>
                 </div>
                 <div className="forget-label">
                     <Link to="/customer/login/forgotpassword">Forgot password?</Link>
+                </div>
+                <div className="forget-label">
+                    <Link to="/customer/login/forgotuserName">Forgot UserName?</Link>
                 </div>
                 <div className="login-btn">
                     <input className="l-btn" type="submit" value="Login" />

@@ -63,6 +63,9 @@ const VerifyOtp = () => {
                         required
                     />
                 </div>
+                <div className="data">
+                    <p>Enter the OTP that you have recieved to reset the password</p>
+                </div>
                 <div className="login-btn">
                     <input className="l-btn" type="submit" value="Verify" />
                 </div>
