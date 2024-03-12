@@ -41,3 +41,10 @@ header .auth:hover {
 header .authentication a {
     padding: 0 0.5rem;
 }
+
+header .authentication .location{
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+}

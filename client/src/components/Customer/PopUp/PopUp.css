@@ -8,6 +8,7 @@ dialog {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 dialog h2{
@@ -26,6 +27,7 @@ dialog select{
     padding: 1rem;
     font-size: 1rem;
     border: 1px solid var(--primary-color);
+    cursor: pointer;
 }
 
 dialog div .btn{

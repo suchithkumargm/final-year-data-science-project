@@ -4,11 +4,14 @@ import { createRoot } from 'react-dom/client'; // Import createRoot from react-d
 import './reset.css';
 import './index.css';
 import App from './App.js';
+import { AppProvider } from './AppContext';
 
 const root = createRoot(document.getElementById('root')); // Use createRoot to create a root
 
 root.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>
 );

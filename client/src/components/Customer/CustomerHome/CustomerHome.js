@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom';
 import './CustomerHome.css';
 import PopUp from '../PopUp/PopUp.js';
 import BrowseRestaurants from './BrowseRestaurants.js';
+import { useAppContext } from '../../../AppContext.js';
 
 const CustomerHome = () => {
+    const { locationPopup, setLocationPopup } = useAppContext();
+
     const [isPopupOpen, setPopupOpen] = useState(true);
     const [selectedLocation, setSelectedLocation] = useState('');
     const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => {
+        if (localStorage.getItem('location')) {
+            setSelectedLocation(localStorage.getItem('location'))
+        }
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:5000/customers/orders/getRestaurantRecommendations', {
@@ -42,7 +48,8 @@ const CustomerHome = () => {
 
     return (
         <>
-            {isPopupOpen && <PopUp onSave={handleSave} />}
+            {/* {isPopupOpen && localStorage.getItem('location') == null && !locationPopup && <PopUp onSave={handleSave} />} */}
+            {!locationPopup && <PopUp onSave={handleSave} />}
             {recommendations ? (
                 <div className="recommendations" >
                     <h1>Personalized Recommendations Just For You 😋 </h1>
@@ -56,7 +63,7 @@ const CustomerHome = () => {
                 </div>
             ) : (<div class="loading-spinner"></div>)}
 
-            <BrowseRestaurants selectedLocation={selectedLocation} handleRestaurantClick/>
+            <BrowseRestaurants selectedLocation={selectedLocation} handleRestaurantClick />
         </>
     );
 };
