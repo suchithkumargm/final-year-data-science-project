@@ -45,6 +45,7 @@ input.search::after {
     line-height: 54px;
     text-align: center;
     color: var(--secondary-color);
+    padding-top: 1rem;
 }
 
 .recommendations .recommendations-cards {
