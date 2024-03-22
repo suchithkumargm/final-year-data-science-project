@@ -15,6 +15,7 @@ import Resetpassword from './components/Login/Resetpassword/Resetpassword.js';
 import ForgotUserName from './components/Login/ForgotUserName/ForgotUserName.js';
 
 import Restaurant from './components/Customer/Restaurant/Restaurant.js';
+import ShopKeeperForm from './components/ShopKeeper/ShopKeeperForm/ShopKeeperForm.js';
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
 					<Route path="/customer/login/reset-password/:email" element={<Resetpassword />} />
 					<Route path="/customers/browse-restaurants" element={<CustomerHome />} />
 					<Route path="/customers/browse-restaurants/:id" element={<Restaurant />} />
+					<Route path="/shopkeeper/shopkeeper-form" element={<ShopKeeperForm />} />
 				</Routes>
 				<Footer />
 			</Router >
