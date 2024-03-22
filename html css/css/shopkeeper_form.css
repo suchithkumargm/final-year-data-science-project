@@ -3,7 +3,7 @@
     font-size: 2rem;
     width: 50vw;
     font-weight: 600;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     color: var(--secondary-color);
 }
 
@@ -14,13 +14,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .shopkeeper-form .form-element {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
+    width: 70%;
     padding: 1rem;
 }
 
@@ -30,14 +31,28 @@
     background-color: var(--primary-color);
     font-size: 1.2rem;
     border: none;
-    border-radius: 15px;
+    border-radius: 0.9rem;
     transition: all 0.5s;
     cursor: pointer;
+    margin: 1rem;
 }
 
 .shopkeeper-form .form-element label{
     font-size: 1.5rem;
     color: var(--primary-color);
+}
+
+.shopkeeper-form .form-element select,
+.shopkeeper-form .form-element input{
+    width: 40%;
+    font-size: 1rem;
+    color: var(--primary-color);
+    padding: 0.5rem;
+}
+
+.shopkeeper-form .form-element input{
+    width:38%;
+    padding: 0.5rem 0.2rem;
 }
 
 .shopkeeper-form .analysis-btn:hover{
