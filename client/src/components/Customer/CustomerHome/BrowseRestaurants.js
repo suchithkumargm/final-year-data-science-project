@@ -96,7 +96,7 @@ const BrowseRestaurants = ({ selectedLocation }) => {
 						return (
 							<Link key={restaurant.restaurant_id} to={`${restaurant.restaurant_id}`} onClick={() => handleRestaurantClick(restaurant.restaurant_id, restaurant.name)}>
 								<div className="restaurant card">
-									<div class="image" style={{
+									<div className="image" style={{
 										backgroundImage: `url(${restaurant.image_url})`
 									}}></div>
 									<div class="details">
