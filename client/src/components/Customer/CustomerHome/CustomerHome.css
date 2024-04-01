@@ -81,25 +81,26 @@ input.search::after {
 }
 
 .recommendations .recommendations-cards #card1 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
+    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif'); */
     background-size: cover;
+    background-position: center;
     border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards #card2 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
-    background-size: cover;
+    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif'); */
+
     border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards #card3 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
+    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif'); */
     background-size: cover;
     border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards #card4 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
+    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif'); */
     background-size: cover;
     border-radius: 1.5rem;
 }
@@ -129,7 +130,6 @@ input.search::after {
 .restaurants .card .image {
     width: 100%;
     height: 10rem;
-    background: url('../../../assets/images/masalapoori.jpeg');
     background-size: cover;
     background-position: center;
     border-radius: 1.5rem 1.5rem 0 0;

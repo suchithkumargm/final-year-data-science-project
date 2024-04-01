@@ -55,7 +55,12 @@ const CustomerHome = () => {
                     <h1>Personalized Recommendations Just For You 😋 </h1>
                     <div className="recommendations-cards">
                         {recommendations.map((restaurant, index) => (
-                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index + 1}`}>
+                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index + 1}`} style={{
+                                background: `linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url(${restaurant.image_url})`,
+
+                                backgroundSize:'100% 100%',
+                                backgroundPosition: 'center'
+                            }}>
                                 <p>{restaurant.name.substring(0, 12)}..</p>
                             </Link>
                         ))}
