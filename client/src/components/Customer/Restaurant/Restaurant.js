@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import './Restaurant.css'
-import hotelName from '../../../assets/images/restaurant.avif'
 
 const Restaurant = () => {
     const navigate = useNavigate();
@@ -54,7 +53,7 @@ const Restaurant = () => {
                     <div class="location"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg> {restaurantState.location}</div>
                 </div>
 
-                <img src={hotelName} alt="" class="restaurant-img" />
+                <img src={restaurantState.image_url} alt="" class="restaurant-img" />
 
                 <div class="hotel-basic-info">
                     <div class="left-container">

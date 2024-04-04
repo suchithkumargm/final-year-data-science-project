@@ -48,14 +48,15 @@ const CustomerHome = () => {
 
     return (
         <>
-            {/* {isPopupOpen && localStorage.getItem('location') == null && !locationPopup && <PopUp onSave={handleSave} />} */}
             {!locationPopup && <PopUp onSave={handleSave} />}
             {recommendations ? (
                 <div className="recommendations" >
                     <h1>Personalized Recommendations Just For You 😋 </h1>
                     <div className="recommendations-cards">
                         {recommendations.map((restaurant, index) => (
-                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index + 1}`}>
+                            <Link to={`${restaurant.restaurant_id}`} key={index} className="card" id={`card${index + 1}`} >
+                                <div className="gradient"></div>
+                                <img className="recommendation-image" src={restaurant.image_url}/>
                                 <p>{restaurant.name.substring(0, 12)}..</p>
                             </Link>
                         ))}

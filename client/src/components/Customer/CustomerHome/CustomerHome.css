@@ -62,6 +62,7 @@ input.search::after {
     position: relative;
     cursor: pointer;
     transition: all 0.5s;
+    border-radius: 1.5rem;
 }
 
 .recommendations .recommendations-cards .card:hover {
@@ -80,28 +81,22 @@ input.search::after {
     bottom: 1rem;
 }
 
-.recommendations .recommendations-cards #card1 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
-    background-size: cover;
+.recommendations .recommendations-cards .card .gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%);
     border-radius: 1.5rem;
 }
 
-.recommendations .recommendations-cards #card2 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
+.recommendations .recommendations-cards .recommendation-image {
     background-size: cover;
+    object-fit: cover;
     border-radius: 1.5rem;
-}
-
-.recommendations .recommendations-cards #card3 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
-    background-size: cover;
-    border-radius: 1.5rem;
-}
-
-.recommendations .recommendations-cards #card4 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 9.56%, rgba(0, 0, 0, 0) 100%), url('../../../assets/images/pizza.avif');
-    background-size: cover;
-    border-radius: 1.5rem;
+    width: 100%;
+    height: 100%;
 }
 
 .restaurants {
@@ -129,7 +124,6 @@ input.search::after {
 .restaurants .card .image {
     width: 100%;
     height: 10rem;
-    background: url('../../../assets/images/masalapoori.jpeg');
     background-size: cover;
     background-position: center;
     border-radius: 1.5rem 1.5rem 0 0;
@@ -207,13 +201,14 @@ input.search::after {
     height: 50px;
     animation: spin 1s linear infinite;
     margin: auto;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
