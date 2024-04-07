@@ -8,17 +8,17 @@ const Sidebar = () => {
   const [activeItem, setActiveItem] = useState('');
 
   const menuItems = [
-    'LocationVsCount',
-    'OnlineOrderVsCount',
-    'BookTableVsCount',
-    'OnlineOrderVsRating',
-    'BookTableVsRating',
-    'LocationVsOnlineOrder',
-    'LocationVsBookTable',
-    'TypeVsRating',
-    'LocationVsRatingVsType',
-    'LocationVsVotes',
-    'CuisinesVsVotes'
+    'Location Vs Count',
+    'Online Order Vs Count',
+    'Book Table Vs Count',
+    'Online Order Vs Rating',
+    'Book Table Vs Rating',
+    'Location Vs Online Order',
+    'Location Vs Book Table',
+    'Type Vs Rating',
+    'Location Vs Rating Vs Type',
+    'Location Vs Votes',
+    'Cuisines Vs Votes'
   ];
 
   const handleItemClick = (itemName) => {

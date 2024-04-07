@@ -1,12 +1,12 @@
 .sidebar{
     height: 100%;
-    width: 17%;
+    width: 18%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.5s;
 }
 
 .list__items{
-    padding-top: 3rem;
+    padding: 2rem 0;
 }
 
 .list__item{
@@ -21,13 +21,14 @@
     transition: all 0.5s;
 }
 
-.list__item a:hover{
-    color:var(--white-color);
+.list__item:hover{
+    background-color:var(--primary-color);
     transition: all 0.5s;
+    cursor:pointer;
 }
 
-.list__items li:hover{
-    background-color:var(--primary-color);
+.list__item:hover a{
+    color:var(--white-color);
     transition: all 0.5s;
 } 
 
