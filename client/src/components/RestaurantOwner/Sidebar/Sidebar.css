@@ -2,6 +2,7 @@
     height: 100%;
     width: 17%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
 }
 
 .list__items{
@@ -17,12 +18,17 @@
     text-decoration: none;
     color: var(--primary-color);
     font-size: 1rem;
+    transition: all 0.5s;
+}
+
+.list__item a:hover{
+    color:var(--white-color);
+    transition: all 0.5s;
 }
 
 .list__items li:hover{
     background-color:var(--primary-color);
     transition: all 0.5s;
-    color:var(--white-color);
 } 
 
 .active{

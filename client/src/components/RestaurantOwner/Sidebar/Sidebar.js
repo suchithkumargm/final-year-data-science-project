@@ -8,13 +8,17 @@ const Sidebar = () => {
   const [activeItem, setActiveItem] = useState('');
 
   const menuItems = [
-    'Dashboard',
-    'Attendance',
-    'TimeSheet',
-    'ProjectTask',
-    'Approval',
-    'Payroll',
-    'ProfileSettings',
+    'LocationVsCount',
+    'OnlineOrderVsCount',
+    'BookTableVsCount',
+    'OnlineOrderVsRating',
+    'BookTableVsRating',
+    'LocationVsOnlineOrder',
+    'LocationVsBookTable',
+    'TypeVsRating',
+    'LocationVsRatingVsType',
+    'LocationVsVotes',
+    'CuisinesVsVotes'
   ];
 
   const handleItemClick = (itemName) => {
