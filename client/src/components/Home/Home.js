@@ -71,7 +71,7 @@ const Home = () => {
                         <path d="M2 12H22" />
                     </svg>
                 </Link>
-                <Link to={localStorage.getItem('token')?"/restaurant-owner/select-location":"customer/login"} class="launch-restaurants home-option">
+                <Link to={localStorage.getItem('token')?"/restaurant-owner":"customer/login"} class="launch-restaurants home-option">
                     <p>Want to launch a restaurant ?</p>
                     <p>Try our new AI-based restaurant opening predictive model to analyze the restaurant market in just one
                         click.</p>

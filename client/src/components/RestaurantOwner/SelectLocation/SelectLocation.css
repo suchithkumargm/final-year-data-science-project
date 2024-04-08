@@ -1,3 +1,13 @@
+.restaurant-owner{
+    width: 50%;
+    margin:auto;
+}
+
+.restaurant-owner .select-location{
+    width: 60%;
+    margin:auto;
+}
+
 .restaurant-owner h2{
     color: var(--primary-color);
     font-size: 2rem;
