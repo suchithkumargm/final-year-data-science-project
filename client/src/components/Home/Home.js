@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Home.css';
 import images from '../../assets/images.js';
 
 const Home = () => {
+
+    const [userType,setUserType]=useState('');
 
     useEffect(() => {
         const scrollers = document.querySelectorAll('.scroller');
@@ -27,8 +29,15 @@ const Home = () => {
                 });
             });
         }
-    }, []); // Empty dependency array to run the effect only once on mount
+    }, [userType]); // Empty dependency array to run the effect only once on mount
 
+    const setUserCustomer=()=>{
+        setUserType('customer')
+    }
+
+    const setUserRestaurantOwner=()=>{
+        setUserType('restaurant-owner')
+    }
 
     return (
         <>
@@ -62,7 +71,7 @@ const Home = () => {
             </div>
 
             <div class="home-options">
-                <Link to={localStorage.getItem('token')?"customers/browse-restaurants":"customer/login"} class="home-option browse-restaurants">
+                <Link to={localStorage.getItem('token')?"customers/browse-restaurants":"customer/login"} onClick={setUserCustomer} class="home-option browse-restaurants">
                     <p>Browse Restaurants</p>
                     <p>Discover Flavor, Rate Service: Navigate Restaurants with Personalized Ratings.</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
@@ -72,7 +81,7 @@ const Home = () => {
                         <path d="M2 12H22" />
                     </svg>
                 </Link>
-                <Link to={localStorage.getItem('token')?"/launch-restaurant":"customer/login"} class="launch-restaurants home-option">
+                <Link to={localStorage.getItem('token')?"/restaurant-owner":"customer/login"} onClick={setUserRestaurantOwner} class="launch-restaurants home-option">
                     <p>Want to launch a restaurant ?</p>
                     <p>Try our new AI-based restaurant opening predictive model to analyze the restaurant market in just one
                         click.</p>
