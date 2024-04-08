@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 
-import Sidebar from './Sidebar/Sidebar.js';
+import Sidebar from '../Sidebar/Sidebar.js';
 
 const GraphAnalysis=()=>{
 

@@ -1,0 +1,42 @@
+.restaurant-owner h2{
+    color: var(--primary-color);
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+.restaurant-owner div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.restaurant-owner select{
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.restaurant-owner div .btn{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.restaurant-owner div.btn button{
+    padding: 0.7rem 1.8rem;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.restaurant-owner div.btn button:hover{
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    outline: 1px solid var(--primary-color);
+    transition: all 0.5s;
+}
