@@ -23,7 +23,6 @@
 
 .list__item:hover{
     background-color:var(--primary-color);
-    transition: all 0.5s;
     cursor:pointer;
 }
 
@@ -33,8 +32,11 @@
 } 
 
 .active{
-    border: 1px solid var(--white-color);
-    border-radius: 5px;
+    background-color: var(--primary-color);
+}
+
+.active a{
+    color: var(--white-color);
 }
 
 @media (width<1000px){

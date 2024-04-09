@@ -4,7 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar/Sidebar.js';
 
 import LocationVsCount from './Sidebar/NavigationItems/LocationVsCount.js';
-import Header from '../Header/Header.js';
+
+import './RestaurantOwnerRoutes.css';
 
 const RestaurantOwnerRoutes = () => {
 
@@ -34,7 +35,7 @@ const RestaurantOwnerRoutes = () => {
     },[])
 
 	return (
-		<div className='main'>
+		<div className='restaurant-analysis'>
 			<Sidebar />
 			<Routes>
 				<Route path="/analysis/location-vs-count" element={<LocationVsCount />} />

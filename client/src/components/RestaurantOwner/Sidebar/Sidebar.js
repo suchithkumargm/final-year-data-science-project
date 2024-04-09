@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from'react-router-dom';
 
 import SidebarItem from './SidebarItem.js';
 import './Sidebar.css';
 
 const Sidebar = () => {
+
+  const navigate = useNavigate();
+
   const [activeItem, setActiveItem] = useState('');
 
   const menuItems = [
@@ -22,6 +25,7 @@ const Sidebar = () => {
   ];
 
   const handleItemClick = (itemName) => {
+    navigate(`analysis/${itemName.toLowerCase().replace(/\s+/g, '-')}`);
     setActiveItem(itemName);
   };
 
