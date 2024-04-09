@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SidebarItem = ({ itemName, activeItem, handleItemClick }) => (
     <li className={`${activeItem === itemName ? 'active' : ''} list__item`} onClick={() => handleItemClick(itemName)}>
-        <Link to={`${itemName.toLowerCase()}`}>
+        <Link to={`analysis/${itemName.toLowerCase().replace(/\s+/g, '-')}`}>
             {itemName}
         </Link>
     </li>

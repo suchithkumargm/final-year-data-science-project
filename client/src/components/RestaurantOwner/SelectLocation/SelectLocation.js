@@ -20,7 +20,8 @@ const SelectLocation = () => {
     };
 
     const onSave = () => {
-        navigate("analysis");
+        localStorage.setItem('location',selectedLocation);
+        navigate("analysis/location-vs-count");
     }
 
     return (
