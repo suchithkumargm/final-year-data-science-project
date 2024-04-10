@@ -16,6 +16,10 @@ import ForgotUserName from './components/Login/ForgotUserName/ForgotUserName.js'
 
 import Restaurant from './components/Customer/Restaurant/Restaurant.js';
 
+import SelectLocation from './components/RestaurantOwner/SelectLocation/SelectLocation.js';
+import GraphAnalysis from './components/RestaurantOwner/GraphAnalysis/GraphAnalysis.js';
+import LocationVsCount from './components/RestaurantOwner/Sidebar/NavigationItems/LocationVsCount.js';
+import RestaurantOwnerRoutes from './components/RestaurantOwner/RestaurantOwnerRoutes.js';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +39,11 @@ const App = () => {
 					<Route path="/customer/login/reset-password/:email" element={<Resetpassword />} />
 					<Route path="/customers/browse-restaurants" element={<CustomerHome />} />
 					<Route path="/customers/browse-restaurants/:id" element={<Restaurant />} />
+					{/* <Route path="/restaurant-owner" element={<SelectLocation />} />
+					<Route path="/restaurant-owner/analysis" element={<GraphAnalysis />} /> */}
+					{/* <Route path="/restaurant-owner/analysis/location vs count" element={<LocationVsCount />} /> */}
+					<Route path="/restaurant-owner" element={<SelectLocation />} />
+					<Route path="/restaurant-owner/*" element={<RestaurantOwnerRoutes />} />
 				</Routes>
 				<Footer />
 			</Router >
