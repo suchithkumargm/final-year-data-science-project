@@ -2,7 +2,8 @@ import React ,{ useState, useEffect }from 'react';
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
-// import './OnlineorderVsCount.css';
+import './OnlineorderVsCount.css';
+
 const OnlineorderVsCount = ({ location, restaurantsData }) => {
     const [topRestaurants, setTopRestaurants] = useState([]);
 
@@ -47,7 +48,7 @@ const OnlineorderVsCount = ({ location, restaurantsData }) => {
     };
 
     return (
-        <div>
+        <div className='right-side-graph-content'>
             <h2>Top 10 Restaurants by Votes in {location}</h2>
             <Bar data={chartData} options={options} />
         </div>
