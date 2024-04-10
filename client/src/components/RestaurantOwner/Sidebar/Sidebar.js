@@ -13,14 +13,14 @@ const Sidebar = () => {
   const menuItems = [
     'Location Vs Count',
     'Online Order Vs Count',
-    'Book Table Vs Count',
+    'Top 10 Restaurant Vs vote',
+    'Restaurant Vs Count',
     'Online Order Vs Rating',
     'Book Table Vs Rating',
     'Location Vs Online Order',
     'Location Vs Book Table',
     'Type Vs Rating',
     'Location Vs Rating Vs Type',
-    'Location Vs Votes',
     'Cuisines Vs Votes'
   ];
 

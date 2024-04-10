@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar/Sidebar.js';
 import LocationVsCount from './Sidebar/NavigationItems/LocationVsCount.js';
 import OnlineorderVsCount from './Sidebar/NavigationItems/OnlineorderVsCount.js';
+import Top10Restaurant from './Sidebar/NavigationItems/Top10Restaurant.js';
+import RestaurantCountPlot from './Sidebar/NavigationItems/RestaurantCountPlot.js';
 
 import './RestaurantOwnerRoutes.css';
 
@@ -44,6 +46,8 @@ const RestaurantOwnerRoutes = () => {
             <Routes>
                 <Route path="/analysis/location-vs-count" element={<LocationVsCount />} />
                 <Route path="/analysis/Online-Order-Vs-Count" element={<OnlineorderVsCount location={location} restaurantsData={restaurantsData} />} />
+                <Route path="/analysis/top-10-restaurant-vs-vote" element={<Top10Restaurant location={location} restaurantsData={restaurantsData} />} />
+                <Route path="/analysis/restaurant-vs-count" element={<RestaurantCountPlot location={location} restaurantsData={restaurantsData} />} />
             </Routes>
         </div >
     );
