@@ -1,16 +1,14 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Sidebar from './Sidebar/Sidebar.js';
-
 import LocationVsCount from './Sidebar/NavigationItems/LocationVsCount.js';
-
-import './RestaurantOwnerRoutes.css';
 import OnlineorderVsCount from './Sidebar/NavigationItems/OnlineorderVsCount.js';
 
-const RestaurantOwnerRoutes = () => {
+import './RestaurantOwnerRoutes.css';
 
-	const [restaurantsData,setRestaurantsData]=useState([]);
+const RestaurantOwnerRoutes = () => {
+    const [restaurantsData, setRestaurantsData] = useState([]);
     const location = localStorage.getItem('location');
 
     useEffect(() => {
@@ -24,7 +22,6 @@ const RestaurantOwnerRoutes = () => {
                 });
 
                 const fetchedDetails = await response.json();
-                console.log(fetchedDetails);
 
                 if (fetchedDetails) {
                     setRestaurantsData(fetchedDetails);
@@ -33,18 +30,23 @@ const RestaurantOwnerRoutes = () => {
                 console.error('Error fetching recommendations:', error);
             }
         };
-        fetchData();
-    },[])
 
-	return (
-		<div className='restaurant-analysis'>
-			<Sidebar />
-			<Routes>
-				<Route path="/analysis/location-vs-count" element={<LocationVsCount />} />
-				<Route path="/analysis/Online-Order-Vs-Count" element={<OnlineorderVsCount location={location}/>} />
-			</Routes>
-		</div >
-	);
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        // console.log(restaurantsData);
+    }, [restaurantsData]);
+
+    return (
+        <div className='restaurant-analysis'>
+            <Sidebar />
+            <Routes>
+                <Route path="/analysis/location-vs-count" element={<LocationVsCount />} />
+                <Route path="/analysis/Online-Order-Vs-Count" element={<OnlineorderVsCount location={location} restaurantsData={restaurantsData} />} />
+            </Routes>
+        </div >
+    );
 }
 
 export default RestaurantOwnerRoutes;
