@@ -6,10 +6,12 @@ import Sidebar from './Sidebar/Sidebar.js';
 import LocationVsCount from './Sidebar/NavigationItems/LocationVsCount.js';
 
 import './RestaurantOwnerRoutes.css';
+import OnlineorderVsCount from './Sidebar/NavigationItems/OnlineorderVsCount.js';
 
 const RestaurantOwnerRoutes = () => {
 
 	const [restaurantsData,setRestaurantsData]=useState([]);
+    const location = localStorage.getItem('location');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,6 +41,7 @@ const RestaurantOwnerRoutes = () => {
 			<Sidebar />
 			<Routes>
 				<Route path="/analysis/location-vs-count" element={<LocationVsCount />} />
+				<Route path="/analysis/Online-Order-Vs-Count" element={<OnlineorderVsCount location={location}/>} />
 			</Routes>
 		</div >
 	);
