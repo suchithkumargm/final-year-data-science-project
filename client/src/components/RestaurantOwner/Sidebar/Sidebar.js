@@ -14,6 +14,7 @@ const Sidebar = () => {
     'Location Vs Count',
     'Online Order Vs Count',
     'Top 10 Restaurant Vs vote',
+    'Top 10 Dishes Liked Vs vote',
     'Restaurant Vs Count',
     'Online Order Vs Rating',
     'Book Table Vs Rating',
