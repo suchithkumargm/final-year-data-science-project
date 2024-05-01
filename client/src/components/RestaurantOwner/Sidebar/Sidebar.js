@@ -16,9 +16,9 @@ const Sidebar = () => {
     'Top 10 Restaurant Vs vote',
     'Top 10 Dishes Liked Vs vote',
     'Restaurant Vs Count',
+    // 'CorrelationHeatmap',
     'Online Order Vs Rating',
-    'Book Table Vs Rating',
-    'Location Vs Online Order',
+    'Density Vs Rating',
     'Location Vs Book Table',
     'Type Vs Rating',
     'Location Vs Rating Vs Type',
@@ -42,6 +42,9 @@ const Sidebar = () => {
           />
         ))}
       </ul>
+      {/* <div className="report-btn">
+					<input className="s-btn" type="submit" value="Get Report" />
+			</div> */}
     </div>
   );
 };

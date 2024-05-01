@@ -1,0 +1,15 @@
+.density-of-rating {
+    width: 33.5%; /* Equivalent to 600px */
+    margin: 0 auto;
+    padding: 1.25rem; /* Equivalent to 20px */
+    border: 0.0625rem solid #ccc; /* Equivalent to 1px */
+    border-radius: 0.3125rem; /* Equivalent to 5px */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* Equivalent to 0 2px 4px rgba(0, 0, 0, 0.1) */
+  }
+  
+  .density-of-rating h2 {
+    font-size: 1.25rem; /* Equivalent to 20px */
+    margin-bottom: 1.2rem; /* Equivalent to 20px */
+    text-align: center;
+  }
+  

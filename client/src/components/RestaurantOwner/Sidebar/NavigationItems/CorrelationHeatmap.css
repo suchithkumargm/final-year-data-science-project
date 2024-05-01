@@ -1,0 +1,5 @@
+.heatmap-container {
+    width: 83%;
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 0 auto;
+}

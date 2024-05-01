@@ -1,0 +1,17 @@
+.location-vs-book-table {
+     /* Ensure the chart takes the full width of its container */
+    width: 33.5%; /* Equivalent to 600px */
+    margin: 0 auto;
+    padding: 1.25rem; /* Equivalent to 20px */
+    border: 0.0625rem solid #ccc; /* Equivalent to 1px */
+    border-radius: 0.3125rem; /* Equivalent to 5px */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1)
+  }
+  
+  /* Apply responsive styles */
+  @media screen and (max-width: 768px) {
+    .location-vs-book-table {
+      padding: 0 10px; /* Add padding to the sides for smaller screens */
+    }
+  }
+  
