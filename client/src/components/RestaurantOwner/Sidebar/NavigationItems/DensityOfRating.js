@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
-import './DensityOfRating.css';
 
+import './NavigationItems.css'; // Import CSS file for styling
 
 const DensityOfRating = ({ location, restaurantsData }) => {
     const [ratingCounts, setRatingCounts] = useState([]);
@@ -62,7 +62,7 @@ const DensityOfRating = ({ location, restaurantsData }) => {
     };
 
     return (
-        <div className='density-of-rating'>
+        <div className='right-side-pie'>
             <h2>Density of Rating in {location}</h2>
             <Pie data={chartData} options={options} />
         </div>

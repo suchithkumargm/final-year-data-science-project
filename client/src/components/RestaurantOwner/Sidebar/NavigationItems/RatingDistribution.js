@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 
-
-import './RatingDistribution.css'; // Import CSS file for styling
+import './NavigationItems.css'; // Import CSS file for styling
 
 const RatingDistribution = ({ location, restaurantsData }) => {
     const [ratingData, setRatingData] = useState({});

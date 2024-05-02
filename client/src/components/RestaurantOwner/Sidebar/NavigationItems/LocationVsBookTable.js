@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
-import './LocationVsBookTable.css';
+import './NavigationItems.css'; // Import CSS file for styling
 
 const LocationVsBookTable = ({ location, restaurantsData }) => {
     const [countData, setCountData] = useState({});
@@ -45,7 +45,7 @@ const LocationVsBookTable = ({ location, restaurantsData }) => {
     };
 
     return (
-        <div className='location-vs-book-table'>
+        <div className='right-side'>
             <h2>Location vs Book Table in {location}</h2>
             <Bar data={chartData} options={options} />
         </div>

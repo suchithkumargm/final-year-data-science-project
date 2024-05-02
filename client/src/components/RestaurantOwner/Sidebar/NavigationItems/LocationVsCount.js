@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
-import './LocationVsCount.css';
+import './NavigationItems.css'; // Import CSS file for styling
 
 const LocationVsCount = () => {
 
@@ -12,7 +12,7 @@ const LocationVsCount = () => {
     const counts = topLocations.map(item => item.count);
 
     return (
-        <div className='right-side-graph-content'>
+        <div className='right-side'>
             <h1>Location Vs Count</h1>
             <Bar
                 data={{

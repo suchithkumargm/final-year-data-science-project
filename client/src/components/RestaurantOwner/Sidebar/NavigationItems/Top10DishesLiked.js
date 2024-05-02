@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from "react-chartjs-2";
 
-import './Top10DishesLiked.css';
+import './NavigationItems.css'; // Import CSS file for styling
 
 const Top10DishesLiked = ({ location, restaurantsData }) => {
     const [topDishes, setTopDishes] = useState([]);
@@ -57,7 +57,7 @@ const Top10DishesLiked = ({ location, restaurantsData }) => {
     };
 
     return (
-        <div className='right-side-graph-content'>
+        <div className='right-side'>
             <h2>Top 10 Dishes Liked in {location}</h2>
             <Bar data={chartData} options={options} />
         </div>

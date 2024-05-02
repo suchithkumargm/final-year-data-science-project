@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
-import './Top10Restaurant.css';
+
+import './NavigationItems.css'; // Import CSS file for styling
 
 const RestaurantCountPlot = ({ location, restaurantsData }) => {
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -54,7 +55,7 @@ const RestaurantCountPlot = ({ location, restaurantsData }) => {
     };
   
     return (
-      <div className='right-side-graph-content'>
+      <div className='right-side'>
         <h2>Count of Different Types of Restaurants in {location}</h2>
         <Bar data={chartData} options={chartOptions} />
       </div>

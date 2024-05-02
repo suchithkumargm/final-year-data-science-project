@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'react-chartjs-2';
 
-import './CorrelationHeatmap.css'; // Import CSS file for styling
+import './NavigationItems.css'; // Import CSS file for styling
 
 const CorrelationHeatmap = ({ location,restaurantsData }) => {
     const [correlationMatrix, setCorrelationMatrix] = useState([]);

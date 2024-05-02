@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 
+import './NavigationItems.css'; // Import CSS file for styling
+
 const OnlineorderVsCount = ({ location, restaurantsData }) => {
     const [onlineOrderCounts, setOnlineOrderCounts] = useState({});
 
@@ -55,7 +57,7 @@ const OnlineorderVsCount = ({ location, restaurantsData }) => {
     };
 
     return (
-        <div className='right-side-graph'>
+        <div className='right-side-pie'>
             <h2>Online Order Distribution in {location}</h2>
             <Pie data={chartData} options={options} />
         </div>

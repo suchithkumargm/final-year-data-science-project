@@ -20,9 +20,9 @@ const Sidebar = () => {
     'Online Order Vs Rating',
     'Density Vs Rating',
     'Location Vs Book Table',
-    'Type Vs Rating',
-    'Location Vs Rating Vs Type',
-    'Cuisines Vs Votes'
+    // 'Type Vs Rating',
+    // 'Location Vs Rating Vs Type',
+    // 'Cuisines Vs Votes'
   ];
 
   const handleItemClick = (itemName) => {
